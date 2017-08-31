@@ -288,7 +288,10 @@
                                 </div>
                             </div>
                             <div class="row">
-
+                                <br>
+                                <div class="col-md-3 col-sm-12 col-xs-12">
+                                    <input type="button" class="btn btn-default btn-block" value="Cancelar" @click="CancelarRegistro">
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -299,18 +302,23 @@
 </template>
 <script>
 export default {
-    name: 'inspeccion',
+    name: 'formulario',
     props: ['tituloPanel'],
-    data(){
-        return{
+    data() {
+        return {
             titulo: this.tituloPanel
         }
     },
     watch: {
         tituloPanel: function() {
-            this.titulo= this.tituloPanel
+            this.titulo = this.tituloPanel
         }
-  }
+    },
+    methods:{
+        CancelarRegistro:function(){
+            this.$emit('clicBtnCancelarRegistro')
+        }
+    }
 }
 </script>
 <style>

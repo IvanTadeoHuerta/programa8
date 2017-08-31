@@ -24,8 +24,15 @@
                                     </button>
                                 </div>
                                 <div class="col-md-1 col-sm-12 col-xs-12 col-md-offset-2 col-lg-offset-2">
-                                    <button class="btn btn-success btn-block" @click="mostrarPanelFormulario">
+                                    <button class="btn btn-success btn-block" 
+                                            @click="mostrarPanelFormulario"
+                                            v-show="btnMostrarFormulario">
                                         <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                    <button class="btn btn-success btn-block"
+                                            @click="ocultarPanelFormulario"
+                                            v-show="btnOcultarFormulario">
+                                        <span class="glyphicon glyphicon-minus"></span>
                                     </button>
                                 </div>
                             </div>
@@ -69,15 +76,31 @@
 
 export default {
     name: 'busquedapanel',
+    props: ['accion'],
     data() {
         return {
-
+            btnMostrarFormulario: true,
+            btnOcultarFormulario: false
         }
     },
     methods:{
-        mostrarPanelFormulario(){
-           this.$emit('clicOnAddBtn')
-           
+        mostrarPanelFormulario: function(){
+           this.$emit('clicVerFormulario')
+           this.btnMostrarFormulario = false
+           this.btnOcultarFormulario = true
+        },
+        ocultarPanelFormulario:function(){
+           this.$emit('clicCerrarFormulario')
+           this.btnMostrarFormulario = true
+           this.btnOcultarFormulario = false
+        }
+    },
+    watch:{
+        accion:function(){
+            if(this.accion == ''){
+                this.btnMostrarFormulario = true
+                this.btnOcultarFormulario = false
+            }
         }
     }
 }

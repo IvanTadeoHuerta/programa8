@@ -2,8 +2,9 @@
   <div id="app">
     <cabecera :usuario="usuario"></cabecera>
     <menuoptions></menuoptions>
-    <busquedapanel @clicOnAddBtn="verPanelFormulario"></busquedapanel>
-    <inspeccion :tituloPanel="tituloAccion" v-show="mostarFormulario"></inspeccion>
+    <busquedapanel @clicVerFormulario="verPanelFormulario" :accion="tituloAccion" @clicCerrarFormulario="ocultarPanelFormulario"></busquedapanel>
+    <formulario @clicBtnCancelarRegistro="ocultarPanelFormulario" :tituloPanel="tituloAccion" v-show="mostarFormulario">
+    </formulario>
   </div>
 </template>
 
@@ -11,7 +12,7 @@
 import Cabecera from './components/Cabecera.vue'
 import Menuoptions from './components/MenuOptions.vue'
 import Busquedapanel from './components/BusquedaPanel.vue'
-import Inspeccion from './components/Inspeccion.vue'
+import Formulario from './components/FormularioInspeccion.vue'
 export default {
   name: 'app',
   data() {
@@ -28,12 +29,18 @@ export default {
     Cabecera,
     Menuoptions,
     Busquedapanel,
-    Inspeccion
+    Formulario
   },
   methods: {
-    verPanelFormulario() {
-      this.mostarFormulario = !this.mostarFormulario
+    verPanelFormulario:function() {
       this.tituloAccion = 'Formulario de registro'
+      this.mostarFormulario = true
+     
+    },
+
+    ocultarPanelFormulario: function(){
+      this.tituloAccion = ''
+      this.mostarFormulario = false
     }
   }
 }
