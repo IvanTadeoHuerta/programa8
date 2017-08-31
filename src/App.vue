@@ -2,8 +2,8 @@
   <div id="app">
      <cabecera :usuario="usuario"></cabecera>
      <menuoptions></menuoptions>
-     <busquedapanel></busquedapanel>
-     <inspeccion :tituloPanel="tituloAccion"></inspeccion>
+     <busquedapanel @clicOnAddBtn="alerta"></busquedapanel>
+     <inspeccion :tituloPanel="tituloAccion" v-show="mostarFormulario"></inspeccion>
   </div>
 </template>
 
@@ -17,14 +17,23 @@ export default {
   data () {
     return {
         usuario: 'Ivan Tadeo Huerta',
+        mostarFormulario: false,
         tituloAccion: 'Aqui va la accion'
     }
+  },
+   mounted: function () {
+      this.mostarFormulario= false
   },
   components: {
     Cabecera,
     Menuoptions,
     Busquedapanel,
     Inspeccion
+  },
+  methods:{
+    alerta(){
+      this.mostarFormulario = !this.mostarFormulario 
+    }
   }
 }
 </script>

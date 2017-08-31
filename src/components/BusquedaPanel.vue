@@ -24,7 +24,7 @@
                                     </button>
                                 </div>
                                 <div class="col-md-1 col-sm-12 col-xs-12 col-md-offset-2 col-lg-offset-2">
-                                    <button class="btn btn-success btn-block">
+                                    <button class="btn btn-success btn-block" @click="mostrarPanelFormulario">
                                         <span class="glyphicon glyphicon-plus"></span>
                                     </button>
                                 </div>
@@ -72,6 +72,12 @@ export default {
     data() {
         return {
 
+        }
+    },
+    methods:{
+        mostrarPanelFormulario(){
+           this.$emit('clicOnAddBtn')
+           
         }
     }
 }
