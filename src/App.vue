@@ -3,6 +3,7 @@
      <cabecera></cabecera>
      <menuoptions></menuoptions>
      <busquedapanel></busquedapanel>
+     <inspeccion></inspeccion>
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 import Cabecera from './components/Cabecera.vue'
 import Menuoptions from './components/MenuOptions.vue'
 import Busquedapanel from './components/BusquedaPanel.vue'
+import Inspeccion from './components/Inspeccion.vue'
 export default {
   name: 'app',
   data () {
@@ -20,7 +22,8 @@ export default {
   components: {
     Cabecera,
     Menuoptions,
-    Busquedapanel
+    Busquedapanel,
+    Inspeccion
   }
 }
 </script>
