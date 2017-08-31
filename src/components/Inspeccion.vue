@@ -305,7 +305,12 @@ export default {
         return{
             titulo: this.tituloPanel
         }
-    }
+    },
+    watch: {
+        tituloPanel: function() {
+            this.titulo= this.tituloPanel
+        }
+  }
 }
 </script>
 <style>

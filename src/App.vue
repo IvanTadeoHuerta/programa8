@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-     <cabecera :usuario="usuario"></cabecera>
-     <menuoptions></menuoptions>
-     <busquedapanel @clicOnAddBtn="alerta"></busquedapanel>
-     <inspeccion :tituloPanel="tituloAccion" v-show="mostarFormulario"></inspeccion>
+    <cabecera :usuario="usuario"></cabecera>
+    <menuoptions></menuoptions>
+    <busquedapanel @clicOnAddBtn="verPanelFormulario"></busquedapanel>
+    <inspeccion :tituloPanel="tituloAccion" v-show="mostarFormulario"></inspeccion>
   </div>
 </template>
 
@@ -14,15 +14,15 @@ import Busquedapanel from './components/BusquedaPanel.vue'
 import Inspeccion from './components/Inspeccion.vue'
 export default {
   name: 'app',
-  data () {
+  data() {
     return {
-        usuario: 'Ivan Tadeo Huerta',
-        mostarFormulario: false,
-        tituloAccion: 'Aqui va la accion'
+      usuario: 'Ivan Tadeo Huerta',
+      mostarFormulario: false,
+      tituloAccion: ''
     }
   },
-   mounted: function () {
-      this.mostarFormulario= false
+  mounted: function() {
+    this.mostarFormulario = false
   },
   components: {
     Cabecera,
@@ -30,9 +30,10 @@ export default {
     Busquedapanel,
     Inspeccion
   },
-  methods:{
-    alerta(){
-      this.mostarFormulario = !this.mostarFormulario 
+  methods: {
+    verPanelFormulario() {
+      this.mostarFormulario = !this.mostarFormulario
+      this.tituloAccion = 'Formulario de registro'
     }
   }
 }
