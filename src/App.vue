@@ -2,12 +2,14 @@
   <div id="app">
      <cabecera></cabecera>
      <menuoptions></menuoptions>
+     <busquedapanel></busquedapanel>
   </div>
 </template>
 
 <script>
 import Cabecera from './components/Cabecera.vue'
 import Menuoptions from './components/MenuOptions.vue'
+import Busquedapanel from './components/BusquedaPanel.vue'
 export default {
   name: 'app',
   data () {
@@ -17,7 +19,8 @@ export default {
   },
   components: {
     Cabecera,
-    Menuoptions
+    Menuoptions,
+    Busquedapanel
   }
 }
 </script>
