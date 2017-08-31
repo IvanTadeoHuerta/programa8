@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-     <cabecera></cabecera>
+     <cabecera :usuario="usuario"></cabecera>
      <menuoptions></menuoptions>
      <busquedapanel></busquedapanel>
-     <inspeccion></inspeccion>
+     <inspeccion :tituloPanel="tituloAccion"></inspeccion>
   </div>
 </template>
 
@@ -16,7 +16,8 @@ export default {
   name: 'app',
   data () {
     return {
-     
+        usuario: 'Ivan Tadeo Huerta',
+        tituloAccion: 'Aqui va la accion'
     }
   },
   components: {

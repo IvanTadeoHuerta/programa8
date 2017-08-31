@@ -34,7 +34,6 @@
 <script>
 
 export default {
-    el:'menu',
     name: 'menuoptions',
     data() {
         return {

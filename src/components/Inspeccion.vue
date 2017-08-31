@@ -4,7 +4,7 @@
             <br/>
             <div class="col-md-12">
                 <div class="panel panel-success">
-                    <div class="panel-heading">Detalle del predio</div>
+                    <div class="panel-heading">{{ titulo }}</div>
                     <div class="panel-body">
                         <form id="formularioPrincipal">
                             <div class="row">
@@ -299,7 +299,13 @@
 </template>
 <script>
 export default {
-    name: 'inspeccion'
+    name: 'inspeccion',
+    props: ['tituloPanel'],
+    data(){
+        return{
+            titulo: this.tituloPanel
+        }
+    }
 }
 </script>
 <style>

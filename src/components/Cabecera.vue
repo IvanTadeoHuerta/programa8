@@ -12,15 +12,10 @@
                 <div class="section_info_user">
                     <div class="option_logout" style="font-size: 96%;">Cerrar sesión</div>
                     <div class="divisor"></div>
-                    <div class="user_connected" style="font-size: 96%;">{{ NombreUser }}</div>
+                    <div class="user_connected" style="font-size: 96%;">{{ nombreUsuario }}</div>
                 </div>
             </div>
         </div>
-        <!--<div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-               
-            </div>
-        </div>-->
     </div>
 </template>
 
@@ -28,9 +23,10 @@
 
 export default {
     name: 'cabecera',
+    props: ['usuario'],
     data(){
         return {
-            NombreUser: 'Usuario de prueba' 
+            nombreUsuario: this.usuario
         }
     }
 }
