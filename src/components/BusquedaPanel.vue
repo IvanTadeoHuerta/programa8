@@ -24,43 +24,119 @@
                                     </button>
                                 </div>
                                 <div class="col-md-1 col-sm-12 col-xs-12 col-md-offset-2 col-lg-offset-2">
-                                    <button class="btn btn-success btn-block" 
-                                            @click="mostrarPanelFormulario"
-                                            v-show="btnMostrarFormulario">
+                                    <button class="btn btn-success btn-block" @click="mostrarPanelFormulario" v-show="btnMostrarFormulario">
                                         <span class="glyphicon glyphicon-plus"></span>
                                     </button>
-                                    <button class="btn btn-success btn-block"
-                                            @click="ocultarPanelFormulario"
-                                            v-show="btnOcultarFormulario">
+                                    <button class="btn btn-success btn-block" @click="ocultarPanelFormulario" v-show="btnOcultarFormulario">
                                         <span class="glyphicon glyphicon-minus"></span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="panel-body" style="margin-top: -15px;">
-                        <div class="table-responsive">
-                            <table id="tabla" class="table table-fixed" border="1" width="100%">
-                                <thead class="acomodar" style="margin-top: -5px;">
-                                    <tr>
-                                        <th width="14%">Región</th>
-                                        <th width="14%">Municipio</th>
-                                        <th width="14%">Folio</th>
-                                        <th width="14%">Nombre del Predio</th>
-                                        <th width="14%">Codigo de Identificación</th>
-                                        <th width="14%">Registro Forestal Nacional</th>
-                                        <th width="14%">Estatus Industria</th>
-                                    </tr>
+                    <div class="panel-body table-responsive" style="margin-top: -15px; height: 250px; overflow-y: auto; overflow-x: hidden;">
+                        <div class="table-container">
+
+                            <table class="table table-striped">
+                                <thead>
+                                    <th>Región</th>
+                                    <th>Municipio</th>
+                                    <th>Folio</th>
+                                    <th>Nombre del Predio</th>
+                                    <th>Codigo de Identificación</th>
+                                    <th>Registro Forestal Nacional</th>
+                                    <th>Estatus Industria</th>
                                 </thead>
-                                <tbody class="acomodar showBarsV" id="bodyAllPredios">
+                                <tbody>
                                     <tr>
-                                        <td width="14%">Iva</td>
-                                        <td width="14%">Tadeo</td>
-                                        <td width="14%">Huerta</td>
-                                        <td width="14%">Ejemplo</td>
-                                        <td width="14%">ejemplo</td>
-                                        <td width="14%">1222222222222222222222222222222</td>
-                                        <td width="14%">11111111111111111111111</td>
+                                        <td>This example shows the DataTables table body scrolling in the vertical direction. </td>
+                                        <td>option is enabled in this example. This will have the</td>
+                                        <td>CSS, with some decorations omitted for clarity:</td>
+                                        <td>10280583</td>
+                                        <td>Thanks for the solution! There was a slight bug</td>
+                                        <td>Because of that the width of the thead columns is </td>
+                                        <td>alta ejemplo de scroll</td>
+                                    </tr>
+                                    <tr>
+                                        <td>content1</td>
+                                        <td>content2</td>
+                                        <td>content3</td>
+                                        <td>content4</td>
+                                        <td>content5</td>
+                                        <td>content6</td>
+                                        <td>content7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>content1</td>
+                                        <td>content2</td>
+                                        <td>content3</td>
+                                        <td>content4</td>
+                                        <td>content5</td>
+                                        <td>content6</td>
+                                        <td>content7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>content1</td>
+                                        <td>content2</td>
+                                        <td>content3</td>
+                                        <td>content4</td>
+                                        <td>content5</td>
+                                        <td>content6</td>
+                                        <td>content7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>content1</td>
+                                        <td>content2</td>
+                                        <td>content3</td>
+                                        <td>content4</td>
+                                        <td>content5</td>
+                                        <td>content6</td>
+                                        <td>content7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>content1</td>
+                                        <td>content2</td>
+                                        <td>content3</td>
+                                        <td>content4</td>
+                                        <td>content5</td>
+                                        <td>content6</td>
+                                        <td>content7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>content1</td>
+                                        <td>content2</td>
+                                        <td>content3</td>
+                                        <td>content4</td>
+                                        <td>content5</td>
+                                        <td>content6</td>
+                                        <td>content7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>content1</td>
+                                        <td>content2</td>
+                                        <td>content3</td>
+                                        <td>content4</td>
+                                        <td>content5</td>
+                                        <td>content6</td>
+                                        <td>content7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>content1</td>
+                                        <td>content2</td>
+                                        <td>content3</td>
+                                        <td>content4</td>
+                                        <td>content5</td>
+                                        <td>content6</td>
+                                        <td>content7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>content1</td>
+                                        <td>content2</td>
+                                        <td>content3</td>
+                                        <td>content4</td>
+                                        <td>content5</td>
+                                        <td>content6</td>
+                                        <td>content7</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -83,21 +159,21 @@ export default {
             btnOcultarFormulario: false
         }
     },
-    methods:{
-        mostrarPanelFormulario: function(){
-           this.$emit('clicVerFormulario')
-           this.btnMostrarFormulario = false
-           this.btnOcultarFormulario = true
+    methods: {
+        mostrarPanelFormulario: function() {
+            this.$emit('clicVerFormulario')
+            this.btnMostrarFormulario = false
+            this.btnOcultarFormulario = true
         },
-        ocultarPanelFormulario:function(){
-           this.$emit('clicCerrarFormulario')
-           this.btnMostrarFormulario = true
-           this.btnOcultarFormulario = false
+        ocultarPanelFormulario: function() {
+            this.$emit('clicCerrarFormulario')
+            this.btnMostrarFormulario = true
+            this.btnOcultarFormulario = false
         }
     },
-    watch:{
-        accion:function(){
-            if(this.accion == ''){
+    watch: {
+        accion: function() {
+            if (this.accion == '') {
                 this.btnMostrarFormulario = true
                 this.btnOcultarFormulario = false
             }
@@ -107,5 +183,38 @@ export default {
 </script>
 
 <style  scoped>
+.table-container {
+    height: 15em;
+}
 
+table {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    width: 100%;
+}
+
+table thead {
+    /* head takes the height it requires, 
+                and it's not scaled when table is resized */
+    flex: 0 0 auto;
+    width: calc(100% - 0.9em);
+}
+
+table tbody {
+    /* body takes all the remaining available space */
+    flex: 1 1 auto;
+    display: block;
+    overflow-y: scroll;
+}
+
+table tbody tr {
+    width: 100%;
+}
+
+table thead,
+table tbody tr {
+    display: table;
+    table-layout: fixed;
+}
 </style>
