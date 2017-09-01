@@ -45,17 +45,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="registro in registros">
-                                        <td>Toluca</td>
-                                        <td>Ocoyoacac</td>
-                                        <td>10280583</td>
-                                        <td>San Juan Coapanoaya</td>
-                                        <td>1-9-AB2017</td>
-                                        <td>AVE4039394</td>
-                                        <td>EJEMPLO ESTATUS</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="7" class="text-center"></td>
+                                    <template v-if="registros.length > 0">
+                                        <tr v-for="registro in registros">
+                                            <td>Toluca</td>
+                                            <td>Ocoyoacac</td>
+                                            <td>10280583</td>
+                                            <td>San Juan Coapanoaya</td>
+                                            <td>1-9-AB2017</td>
+                                            <td>AVE4039394</td>
+                                            <td>EJEMPLO ESTATUS</td>
+                                        </tr>
+                                    </template>
+                                    <tr v-else>
+                                        <td colspan="7" class="text-center">No hay registros</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -76,7 +78,7 @@ export default {
         return {
             mostrarPanelBusqueda: true,
             tituloSeccion: 'Consultar inspección',
-            registros: [1, 2, 3, 4, 5, 6, 7]
+            registros: ['1','2','3','4','5']
         }
     },
     watch: {
