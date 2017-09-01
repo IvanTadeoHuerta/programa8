@@ -13,17 +13,23 @@ import Cabecera from './components/Cabecera.vue'
 import Menuoptions from './components/MenuOptions.vue'
 import Busquedapanel from './components/BusquedaPanel.vue'
 import Formulario from './components/FormularioInspeccion.vue'
+import inspeccionService from './services/inspeccion'
 export default {
   name: 'app',
   data() {
     return {
       usuario: 'Ivan Tadeo Huerta',
       mostarFormulario: false,
+      prueba: [],
       tituloAccion: ''
     }
   },
   mounted: function() {
     this.mostarFormulario = false
+    this.prueba = inspeccionService.search('getCatalogos','')
+                  .then(resp => { 
+                    console.log(resp)
+                  })
   },
   components: {
     Cabecera,
