@@ -1,13 +1,16 @@
 <template>
     <div class="container-fluid">
-        <br><br>
-        <div id="rowFind" class="row">
+        <br>
+        <div id="rowFind" class="row" v-show="mostrarPanelBusqueda">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="panel panel-success">
                     <div class="panel-heading">
                         <div class="form-horizontal">
                             <div class="form-group">
-                                <div class="col-md-4 col-sm-12 col-xs-12">
+                                <div class="col-md-1 col-sm-12 col-xs-12">
+                                    <b>Buscar por:</b>
+                                </div>
+                                <div class="col-md-2 col-sm-12 col-xs-12" style="padding-left: 0px;">
                                     <select class="form-control">
                                         <option selected="selected">Criterio1</option>
                                         <option value="1">Region</option>
@@ -15,20 +18,12 @@
                                         <option value="3">Municipio</option>
                                     </select>
                                 </div>
-                                <div class="col-md-4 col-sm-12 col-xs-12">
+                                <div class="col-md-3 col-sm-12 col-xs-12" style="padding-left: 0px;">
                                     <input type="text" placeholder="Texto a buscar" class="form-control">
                                 </div>
-                                <div class="col-md-1 col-sm-12 col-xs-12">
+                                <div class="col-md-1 col-sm-12 col-xs-12" style="padding-left: 0px;">
                                     <button class="btn btn-default btn-block">
                                         <span class="glyphicon glyphicon-search"></span>
-                                    </button>
-                                </div>
-                                <div class="col-md-1 col-sm-12 col-xs-12 col-md-offset-2 col-lg-offset-2">
-                                    <button class="btn btn-success btn-block" @click="mostrarPanelFormulario" v-show="btnMostrarFormulario">
-                                        <span class="glyphicon glyphicon-plus"></span>
-                                    </button>
-                                    <button class="btn btn-success btn-block" @click="ocultarPanelFormulario" v-show="btnOcultarFormulario">
-                                        <span class="glyphicon glyphicon-minus"></span>
                                     </button>
                                 </div>
                             </div>
@@ -39,17 +34,28 @@
 
                             <table class="table table-striped">
                                 <thead>
-                                    <th>Región</th>
-                                    <th>Municipio</th>
-                                    <th>Folio</th>
-                                    <th>Nombre del Predio</th>
-                                    <th>Codigo de Identificación</th>
-                                    <th>Registro Forestal Nacional</th>
-                                    <th>Estatus Industria</th>
+                                    <tr>
+                                        <th>Región</th>
+                                        <th>Municipio</th>
+                                        <th>Folio</th>
+                                        <th>Nombre del Predio</th>
+                                        <th>Codigo de Identificación</th>
+                                        <th>Registro Forestal Nacional</th>
+                                        <th>Estatus Industria</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
+                                    <tr v-for="registro in registros">
+                                        <td>Toluca</td>
+                                        <td>Ocoyoacac</td>
+                                        <td>10280583</td>
+                                        <td>San Juan Coapanoaya</td>
+                                        <td>1-9-AB2017</td>
+                                        <td>AVE4039394</td>
+                                        <td>EJEMPLO ESTATUS</td>
+                                    </tr>
                                     <tr>
-                                        <td colspan="7" class="text-center">realice una busqueda</td>
+                                        <td colspan="7" class="text-center"></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -68,27 +74,19 @@ export default {
     props: ['accion'],
     data() {
         return {
-            btnMostrarFormulario: true,
-            btnOcultarFormulario: false
-        }
-    },
-    methods: {
-        mostrarPanelFormulario: function() {
-            this.$emit('clicVerFormulario')
-            this.btnMostrarFormulario = false
-            this.btnOcultarFormulario = true
-        },
-        ocultarPanelFormulario: function() {
-            this.$emit('clicCerrarFormulario')
-            this.btnMostrarFormulario = true
-            this.btnOcultarFormulario = false
+            mostrarPanelBusqueda: true,
+            tituloSeccion: 'Consultar inspección',
+            registros: [1, 2, 3, 4, 5, 6, 7]
         }
     },
     watch: {
         accion: function() {
-            if (this.accion == '') {
-                this.btnMostrarFormulario = true
-                this.btnOcultarFormulario = false
+            if (this.accion == 'consultar') {
+                this.mostrarPanelBusqueda = true
+                this.tituloSeccion = 'Consultar inspección'
+            } else if (this.accion == 'agregar') {
+                this.mostrarPanelBusqueda = false
+                this.tituloSeccion = 'Agregar inspección'
             }
         }
     }

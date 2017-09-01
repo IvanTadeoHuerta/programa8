@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <cabecera :usuario="usuario"></cabecera>
-    <menuoptions></menuoptions>
-    <busquedapanel @clicVerFormulario="verPanelFormulario" :accion="tituloAccion" @clicCerrarFormulario="ocultarPanelFormulario"></busquedapanel>
-    <formulario @clicBtnCancelarRegistro="ocultarPanelFormulario" :tituloPanel="tituloAccion" v-show="mostarFormulario">
+    <menuoptions  @clicCerrarFormulario="ocultarPanelFormulario"  @clicVerFormulario="verPanelFormulario"></menuoptions>
+    <busquedapanel :accion="nameAction"></busquedapanel>
+    <formulario @clicBtnCancelarRegistro="ocultarPanelFormulario" :accion="nameAction" v-show="mostarFormulario">
     </formulario>
   </div>
 </template>
@@ -21,7 +21,7 @@ export default {
       usuario: 'Ivan Tadeo Huerta',
       mostarFormulario: false,
       prueba: [],
-      tituloAccion: ''
+      nameAction: ''
     }
   },
   mounted: function() {
@@ -39,13 +39,13 @@ export default {
   },
   methods: {
     verPanelFormulario:function() {
-      this.tituloAccion = 'Formulario de registro'
+      this.nameAction = 'agregar'
       this.mostarFormulario = true
      
     },
 
     ocultarPanelFormulario: function(){
-      this.tituloAccion = ''
+      this.nameAction = 'consultar'
       this.mostarFormulario = false
     }
   }

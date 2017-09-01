@@ -4,7 +4,7 @@
             <br/>
             <div class="col-md-12">
                 <div class="panel panel-success">
-                    <div class="panel-heading">{{ titulo }}</div>
+                    <div class="panel-heading"><b>{{ titulo }}</b></div>
                     <div class="panel-body">
                         <form id="formularioPrincipal">
                             <div class="row">
@@ -303,15 +303,15 @@
 <script>
 export default {
     name: 'formulario',
-    props: ['tituloPanel'],
+    props: ['accion'],
     data() {
         return {
-            titulo: this.tituloPanel
+            titulo: ''
         }
     },
     watch: {
-        tituloPanel: function() {
-            this.titulo = this.tituloPanel
+        accion: function() {
+            this.titulo = (this.accion == 'consultar')? 'Detalle de la inspección seleccionada':'Registrar Inspección'
         }
     },
     methods:{
