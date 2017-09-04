@@ -20,7 +20,7 @@
                                     <input type="text" placeholder="Texto a buscar" v-model="textoIngresado" class="form-control">
                                 </div>
                                 <div class="col-md-1 col-sm-12 col-xs-12" style="padding-left: 0px;">
-                                    <button class="btn btn-default btn-block">
+                                    <button class="btn btn-default btn-block" @click="peticionHttpBuscarInspecciones">
                                         <span class="glyphicon glyphicon-search"></span>
                                     </button>
                                 </div>
@@ -107,6 +107,11 @@ export default {
                 }              
                 
             this.$emit('clicEnRegistro',this.setFilaSeleccionada)  
+        },
+        peticionHttpBuscarInspecciones: function(){
+            alert('envia peticion http')
+            console.log('texto ingresado: ',this.textoIngresado)
+            console.log('criterio ingresado: ',this.criterioSeleccionado)
         }
     },
     watch: {
@@ -128,7 +133,8 @@ export default {
         },
         criterioSeleccionado: function(){
             
-            (this.criterioSeleccionado == -1)?alert('Selecciona criterio'): alert('envia peticion')
+            //(this.criterioSeleccionado == -1)?alert('Selecciona criterio'): alert('envia peticion')
+            //Reinicia setFilaSeleccionada y registros
         }
     }
 }
