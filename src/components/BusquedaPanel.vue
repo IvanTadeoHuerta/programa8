@@ -32,7 +32,7 @@
                     <div class="panel-body table-responsive" style="margin-top: -15px; height: 250px; overflow-y: auto; overflow-x: hidden;">
                         <div class="table-container">
 
-                            <table class="table table-striped">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         <th>Región</th>
@@ -46,14 +46,19 @@
                                 </thead>
                                 <tbody>
                                     <template v-if="registros.length > 0">
-                                        <tr v-for="registro in registros">
-                                            <td>Toluca</td>
-                                            <td>Ocoyoacac</td>
-                                            <td>10280583</td>
-                                            <td>San Juan Coapanoaya</td>
-                                            <td>1-9-AB2017</td>
-                                            <td>AVE4039394</td>
-                                            <td>EJEMPLO ESTATUS</td>
+                                        <tr @click="seleccionaRegistro(index)"
+                                             v-for="(registro, index ) in registros" 
+                                             :key="registro.id" 
+                                             :class="{isSeleccionado: setFilaSeleccionada == index}"
+                                             style="cursor:pointer">
+
+                                                <td>Toluca</td>
+                                                <td>Ocoyoacac</td>
+                                                <td>{{ index }} </td>
+                                                <td>San Juan Coapanoaya</td>
+                                                <td>1-9-AB2017</td>
+                                                <td>AVE4039394</td>
+                                                <td>EJEMPLO ESTATUS</td>
                                         </tr>
                                     </template>
                                     <tr v-else>
@@ -77,8 +82,21 @@ export default {
     data() {
         return {
             mostrarPanelBusqueda: true,
+            setFilaSeleccionada: -1,
             tituloSeccion: 'Consultar inspección',
             registros: ['1','2','3','4','5']
+        }
+    },
+    methods:{
+        seleccionaRegistro: function(id){ 
+                
+                if(this.setFilaSeleccionada == id){
+                    this.setFilaSeleccionada = -1
+                }else{
+                    this.setFilaSeleccionada = id
+                }              
+                
+                
         }
     },
     watch: {
@@ -136,4 +154,9 @@ table tbody tr {
     display: table;
     table-layout: fixed;
 }
+
+.isSeleccionado{
+    background-color: #95e192
+}
+
 </style>
