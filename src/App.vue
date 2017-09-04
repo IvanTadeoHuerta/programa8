@@ -6,8 +6,8 @@
           @clicVerFormulario="verPanelFormulario">
     </menuoptions>
     <busquedapanel 
-          :accion="nameAction" 
-          :inspecciones="inspecciones"
+          :accion="nameAction"
+          :opcionesBusqueda="criterioBusqueda" 
           :filaSeleccionada="indicefila"
           @clicEnRegistro="mostrarDetalleInspeccion">
     </busquedapanel>
@@ -31,7 +31,12 @@ export default {
     return {
       usuario: 'Ivan Tadeo Huerta',
       mostrarFormulario: false,
-      inspecciones: ['1','2','3','4','5','6','7','8','9','0'],
+      criterioBusqueda: [
+                        {id:1, value:'Municipio'},
+                        {id:2, value:'Folio'},
+                        {id:4, value:'Regio'},
+                        {id:7, value:'Estatus'}
+                      ],
       indicefila: -1,
       nameAction: ''
     }

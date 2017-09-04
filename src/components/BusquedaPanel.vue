@@ -11,15 +11,13 @@
                                     <b>Buscar por:</b>
                                 </div>
                                 <div class="col-md-2 col-sm-12 col-xs-12" style="padding-left: 0px;">
-                                    <select class="form-control">
-                                        <option selected="selected">Criterio1</option>
-                                        <option value="1">Region</option>
-                                        <option value="2">Localidad</option>
-                                        <option value="3">Municipio</option>
+                                    <select class="form-control" v-model="criterioSeleccionado">
+                                        <option value="-1" selected="selected">Elegir criterio</option>
+                                        <option v-for="criterio in criterios" :value="criterio.id"  :key="criterio.id" >{{ criterio.value }}</option>
                                     </select>
                                 </div>
                                 <div class="col-md-3 col-sm-12 col-xs-12" style="padding-left: 0px;">
-                                    <input type="text" placeholder="Texto a buscar" class="form-control">
+                                    <input type="text" placeholder="Texto a buscar" v-model="textoIngresado" class="form-control">
                                 </div>
                                 <div class="col-md-1 col-sm-12 col-xs-12" style="padding-left: 0px;">
                                     <button class="btn btn-default btn-block">
@@ -52,13 +50,13 @@
                                              :class="{isSeleccionado: setFilaSeleccionada == index}"
                                              style="cursor:pointer">
 
-                                                <td>Toluca</td>
-                                                <td>Ocoyoacac</td>
-                                                <td>{{ index }} </td>
-                                                <td>San Juan Coapanoaya</td>
-                                                <td>1-9-AB2017</td>
-                                                <td>AVE4039394</td>
-                                                <td>EJEMPLO ESTATUS</td>
+                                                <td>{{ registro.region }}</td>
+                                                <td>{{ registro.municipio }}</td>
+                                                <td>{{ registro.folio  }} </td>
+                                                <td>{{ registro.nombre}}</td>
+                                                <td>{{registro.codigo}}</td>
+                                                <td>{{registro.registro}}</td>
+                                                <td>{{registro.estatus}}</td>
                                         </tr>
                                     </template>
                                     <tr v-else>
@@ -78,12 +76,23 @@
 
 export default {
     name: 'busquedapanel',
-    props: ['accion','inspecciones','filaSeleccionada'],
+    props: ['accion','filaSeleccionada','opcionesBusqueda'],
     data() {
         return {
             mostrarPanelBusqueda: true,
             setFilaSeleccionada: this.filaSeleccionada,
-            registros: this.inspecciones
+            criterioSeleccionado: -1,
+            textoIngresado: '',
+            registros:  [
+                      {region:'Toluca', municipio:'Santiago', folio:'10280583', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'},
+                      {region:'Toluca', municipio:'Ocoyoacac', folio:'10280583', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'},
+                      {region:'Toluca', municipio:'Lerma', folio:'10280583', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'},
+                      {region:'Toluca', municipio:'San Mateo', folio:'10280583', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'},
+                      {region:'Toluca', municipio:'Salazar', folio:'10280583', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'},
+                      {region:'Toluca', municipio:'El Zarco', folio:'10280583', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'},
+                      {region:'Valle de bravo', municipio:'Valle de Bravo', folio:'10280583', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'}
+                    ],
+            criterios: this.opcionesBusqueda
         }
     },
     methods:{
@@ -114,8 +123,12 @@ export default {
         mostrarPanelBusqueda: function(){
             this.setFilaSeleccionada = -1
         },
-        filaSeleccionada:function(){
+        filaSeleccionada: function(){
             if(this.filaSeleccionada == -1) this.setFilaSeleccionada = -1
+        },
+        criterioSeleccionado: function(){
+            
+            (this.criterioSeleccionado == -1)?alert('Selecciona criterio'): alert('envia peticion')
         }
     }
 }
