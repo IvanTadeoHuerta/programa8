@@ -132,7 +132,7 @@ export default {
             if(this.filaSeleccionada == -1) this.setFilaSeleccionada = -1
         },
         criterioSeleccionado: function(){
-            
+            this.registros = []
             //(this.criterioSeleccionado == -1)?alert('Selecciona criterio'): alert('envia peticion')
             //Reinicia setFilaSeleccionada y registros
         }
