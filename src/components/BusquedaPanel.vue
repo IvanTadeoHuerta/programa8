@@ -83,12 +83,14 @@ export default {
     },
     watch: {
         accion: function() {
+
             if (this.accion == 'consultar') {
                 this.mostrarPanelBusqueda = true
                 this.tituloSeccion = 'Consultar inspección'
             } else if (this.accion == 'agregar') {
                 this.mostrarPanelBusqueda = false
                 this.tituloSeccion = 'Agregar inspección'
+
             }
         }
     }
@@ -107,6 +109,7 @@ table {
     width: 100%;
 }
 
+
 table thead {
     /* head takes the height it requires, 
                 and it's not scaled when table is resized */
@@ -114,11 +117,14 @@ table thead {
     width: calc(100% - 0.9em);
 }
 
+
 table tbody {
     /* body takes all the remaining available space */
     flex: 1 1 auto;
     display: block;
+
     overflow-y: auto;
+
 }
 
 table tbody tr {
