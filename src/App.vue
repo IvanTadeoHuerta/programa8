@@ -1,9 +1,20 @@
 <template>
   <div id="app">
     <cabecera :usuario="usuario"></cabecera>
-    <menuoptions  @clicCerrarFormulario="ocultarPanelFormulario"  @clicVerFormulario="verPanelFormulario"></menuoptions>
-    <busquedapanel :accion="nameAction"></busquedapanel>
-    <formulario @clicBtnCancelarRegistro="ocultarPanelFormulario" :accion="nameAction" v-show="mostarFormulario">
+    <menuoptions  
+          @clicCerrarFormulario="ocultarPanelFormulario"  
+          @clicVerFormulario="verPanelFormulario">
+    </menuoptions>
+    <busquedapanel 
+          :accion="nameAction" 
+          :inspecciones="inspecciones"
+          :filaSeleccionada="indicefila"
+          @clicEnRegistro="mostrarDetalleInspeccion">
+    </busquedapanel>
+    <formulario 
+          @clicBtnCancelarRegistro="ocultarPanelFormulario" 
+          :accion="nameAction" 
+          v-show="mostrarFormulario">
     </formulario>
   </div>
 </template>
@@ -19,17 +30,18 @@ export default {
   data() {
     return {
       usuario: 'Ivan Tadeo Huerta',
-      mostarFormulario: false,
-      prueba: [],
+      mostrarFormulario: false,
+      inspecciones: ['1','2','3','4','5','6','7','8','9','0'],
+      indicefila: -1,
       nameAction: ''
     }
   },
   mounted: function() {
-    this.mostarFormulario = false
-    this.prueba = inspeccionService.search('getCatalogos','')
+    this.mostrarFormulario = false
+    /*this.inspecciones = inspeccionService.search('getCatalogos','')
                   .then(resp => { 
                     console.log(resp)
-                  })
+                  })*/
   },
   components: {
     Cabecera,
@@ -40,13 +52,20 @@ export default {
   methods: {
     verPanelFormulario:function() {
       this.nameAction = 'agregar'
-      this.mostarFormulario = true
+      this.mostrarFormulario = true
      
     },
 
-    ocultarPanelFormulario: function(){
+    ocultarPanelFormulario: function(){      
+      this.indicefila = -1
       this.nameAction = 'consultar'
-      this.mostarFormulario = false
+      this.mostrarFormulario = false
+    },
+
+    mostrarDetalleInspeccion: function(idInspeccion){
+         this.mostrarFormulario = idInspeccion != -1
+         this.indicefila = idInspeccion
+         this.nameAction = 'consultar'
     }
   }
 }

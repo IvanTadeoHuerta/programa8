@@ -78,13 +78,12 @@
 
 export default {
     name: 'busquedapanel',
-    props: ['accion'],
+    props: ['accion','inspecciones','filaSeleccionada'],
     data() {
         return {
             mostrarPanelBusqueda: true,
-            setFilaSeleccionada: -1,
-            tituloSeccion: 'Consultar inspección',
-            registros: ['1','2','3','4','5']
+            setFilaSeleccionada: this.filaSeleccionada,
+            registros: this.inspecciones
         }
     },
     methods:{
@@ -92,24 +91,31 @@ export default {
                 
                 if(this.setFilaSeleccionada == id){
                     this.setFilaSeleccionada = -1
+                
                 }else{
                     this.setFilaSeleccionada = id
+                    
                 }              
                 
-                
+            this.$emit('clicEnRegistro',this.setFilaSeleccionada)  
         }
     },
     watch: {
         accion: function() {
-
+            
             if (this.accion == 'consultar') {
+                
                 this.mostrarPanelBusqueda = true
-                this.tituloSeccion = 'Consultar inspección'
+                
             } else if (this.accion == 'agregar') {
                 this.mostrarPanelBusqueda = false
-                this.tituloSeccion = 'Agregar inspección'
-
             }
+        },
+        mostrarPanelBusqueda: function(){
+            this.setFilaSeleccionada = -1
+        },
+        filaSeleccionada:function(){
+            if(this.filaSeleccionada == -1) this.setFilaSeleccionada = -1
         }
     }
 }
