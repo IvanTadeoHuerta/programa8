@@ -15,6 +15,7 @@
                                         <option value="-1" selected="selected">Elegir criterio</option>
                                         <option v-for="criterio in criterios" :value="criterio.id"  :key="criterio.id" >{{ criterio.value }}</option>
                                     </select>
+                                    <label style="color:red" v-show="mostrarError">Elige criterio</label>
                                 </div>
                                 <div class="col-md-3 col-sm-12 col-xs-12" style="padding-left: 0px;">
                                     <input type="text" placeholder="Texto a buscar" v-model="textoIngresado" class="form-control">
@@ -82,6 +83,7 @@ export default {
             mostrarPanelBusqueda: true,
             setFilaSeleccionada: this.filaSeleccionada,
             criterioSeleccionado: -1,
+            mostrarError : false,
             textoIngresado: '',
             registros:  [
                       {region:'Toluca', municipio:'Santiago', folio:'10280583', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'},
@@ -100,18 +102,20 @@ export default {
                 
                 if(this.setFilaSeleccionada == id){
                     this.setFilaSeleccionada = -1
-                
                 }else{
-                    this.setFilaSeleccionada = id
-                    
+                    this.setFilaSeleccionada = id                    
                 }              
                 
             this.$emit('clicEnRegistro',this.setFilaSeleccionada)  
         },
         peticionHttpBuscarInspecciones: function(){
-            alert('envia peticion http')
-            console.log('texto ingresado: ',this.textoIngresado)
-            console.log('criterio ingresado: ',this.criterioSeleccionado)
+
+            if(this.criterioSeleccionado == -1){
+                this.mostrarError = true
+            }else {
+                this.mostrarError = false
+                alert('Envia la peticion con criterio y texto a filtrar');
+            }            
         }
     },
     watch: {
@@ -133,8 +137,7 @@ export default {
         },
         criterioSeleccionado: function(){
             this.registros = []
-            //(this.criterioSeleccionado == -1)?alert('Selecciona criterio'): alert('envia peticion')
-            //Reinicia setFilaSeleccionada y registros
+            this.mostrarError = (this.criterioSeleccionado == -1)? true : false
         }
     }
 }
