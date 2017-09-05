@@ -6,7 +6,7 @@
                 <div class="panel panel-success">
                     <div class="panel-heading"><b>{{ titulo }}</b></div>
                     <div class="panel-body">
-                        <form id="formularioPrincipal">
+                        <form id="formularioPrincipal" @submit.prevent>
                             <div class="row">
                                 <br>
                                 <div class="col-md-3 col-sm-12 col-xs-12">
@@ -334,9 +334,21 @@
                             <div class="row">
                                 <br>
                                 <div class="col-md-3 col-sm-12 col-xs-12">
+                                </div>
+                                <div v-if="this.accion == 'agregar'" class="col-md-3 col-sm-12 col-xs-12">
                                     <input type="button" class="btn btn-default btn-block" value="Cancelar" @click="CancelarRegistro">
                                 </div>
+                                <div v-if="this.accion == 'consultar'" class="col-md-3 col-sm-12 col-xs-12">
+                                    <input type="submit" class="btn btn-default btn-block" value="Eliminar" @click="EliminarInspeccion">
+                                </div>
+                                <div v-if="this.accion == 'consultar'" class="col-md-3 col-sm-12 col-xs-12">
+                                    <input type="submit" class="btn btn-success btn-block" value="Actualizar" @click="ActualizarInspeccion">
+                                </div>
+                                <div v-else-if="this.accion == 'agregar'" class="col-md-3 col-sm-12 col-xs-12">
+                                    <input type="submit" class="btn btn-success btn-block" value="Agregar" @click="AgregarInspeccion">
+                                </div>
                             </div>
+                            
                         </form>
                     </div>
                 </div>
@@ -370,6 +382,15 @@ export default {
     methods:{
         CancelarRegistro:function(){
             this.$emit('clicBtnCancelarRegistro')
+        },
+        EliminarInspeccion: function(){
+            alert('Eliminar')
+        },
+        ActualizarInspeccion: function(){
+            alert('Actualizar')
+        },
+        AgregarInspeccion: function (){
+            alert('Agregar')
         }
     }
 }
