@@ -61,7 +61,7 @@
                                 <br>
                                 <div class="col-md-3 col-sm-12 col-xs-12">
                                     <label>Folio</label>
-                                    <input type="text" name="folio" class="form-control" readonly>
+                                    <input type="text" name="folio" class="form-control" :value="folio" readonly>
                                 </div>
                                 <div class="col-md-3 col-sm-12 col-xs-12">
                                     <label>Municipio</label>
@@ -306,8 +306,17 @@ export default {
     props: ['accion'],
     data() {
         return {
-            titulo: ''
+            titulo: '',
+            folio: ''
+
         }
+    },
+    created: function(){
+         this.$bus.$on('set-folio', (folio) => {
+                this.folio = folio
+         })
+
+         console.log('creando componente');
     },
     watch: {
         accion: function() {
