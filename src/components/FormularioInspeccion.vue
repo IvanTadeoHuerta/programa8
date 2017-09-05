@@ -69,7 +69,7 @@
                                 <br>
                                 <div class="col-md-3 col-sm-12 col-xs-12">
                                     <label>Folio</label>
-                                    <input type="text" name="folio" class="form-control" :value="folio" readonly>
+                                    <input type="text" name="folio" class="form-control" :value="Formulario.folio" readonly>
                                 </div>
 
                                 <div class="col-md-3 col-sm-12 col-xs-12">
@@ -133,7 +133,7 @@
                                 <div class="col-md-3 col-sm-12 col-xs-12">
                                     <label>Zona Crítica</label>
                                     <select name="zona_critica" class="form-control">
-                                        <option value="-">Seleccione una opción...</option>
+                                        <option value="-1">Seleccione una opción...</option>
                                     </select>
                                 </div>
                             </div>
@@ -145,7 +145,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" readonly>
                                         <span class="input-group-btn">
-                                            <button type="button" data-info="${data.folio}" class="btn btn-success multiregistro" data-multi="dependencias">Registros</button>
+                                            <button type="button"  class="btn btn-success multiregistro" data-multi="dependencias">Registros</button>
                                         </span>
                                     </div> 
                                 </div>                                  
@@ -160,7 +160,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" readonly>
                                         <span class="input-group-btn">
-                                            <button type="button" class="btn btn-success multiregistro" data-info="${data.folio}" data-multi="vehiculosAsegurados">Registros</button>
+                                            <button type="button" class="btn btn-success multiregistro"  data-multi="vehiculosAsegurados">Registros</button>
                                         </span>
                                     </div>
                                 </div>
@@ -183,7 +183,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" readonly>
                                         <span class="input-group-btn">
-                                            <button type="button" data-info="${data.folio}" class="btn btn-success multiregistro" data-multi="personasAseguradas">Registros</button>
+                                            <button type="button"  class="btn btn-success multiregistro" data-multi="personasAseguradas">Registros</button>
                                         </span>
                                     </div>
                                 </div>
@@ -198,7 +198,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" readonly>
                                         <span class="input-group-btn">
-                                            <button type="button" data-info="${data.folio}" class="btn btn-success multiregistro" data-multi="bienes">Registros</button>
+                                            <button type="button" class="btn btn-success multiregistro" data-multi="bienes">Registros</button>
                                         </span>
                                     </div>
                                 </div>
@@ -211,7 +211,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" readonly>
                                         <span class="input-group-btn">
-                                            <button type="button" data-info="${data.folio}" class="btn btn-success multiregistro" data-multi="predios">Registros</button>
+                                            <button type="button" class="btn btn-success multiregistro" data-multi="predios">Registros</button>
                                         </span>
                                     </div>
                                 </div>
@@ -262,7 +262,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" readonly>
                                         <span class="input-group-btn">
-                                            <button type="button" data-info="${data.folio}" class="btn btn-success multiregistro" data-multi="inspector">Registros</button>
+                                            <button type="button" class="btn btn-success multiregistro" data-multi="inspector">Registros</button>
                                         </span>
                                     </div>
                                 </div>
@@ -306,7 +306,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" readonly>
                                         <span class="input-group-btn">
-                                            <button type="button" data-info="${data.folio}" class="btn btn-success multiregistro" data-multi="archivos">Registros</button>
+                                            <button type="button" class="btn btn-success multiregistro" data-multi="archivos">Registros</button>
                                         </span>
                                     </div>
                                 </div>
@@ -357,14 +357,14 @@
     </div>
 </template>
 <script>
+import Formulario from '../datosFormularios/inspeccion'
 export default {
     name: 'formulario',
     props: ['accion'],
     data() {
         return {
             titulo: '',
-            folio: ''
-
+            Formulario
         }
     },
     created: function(){
