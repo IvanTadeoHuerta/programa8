@@ -38,7 +38,7 @@ export default {
                         {id:7, value:'Estatus'}
                       ],
       indicefila: -1,
-      nameAction: ''
+      nameAction: 'consultar'
     }
   },
   mounted: function() {

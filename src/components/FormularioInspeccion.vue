@@ -69,7 +69,7 @@
                                 <br>
                                 <div class="col-md-3 col-sm-12 col-xs-12">
                                     <label>Folio</label>
-                                    <input type="text" name="folio" class="form-control" :value="Formulario.folio" readonly>
+                                    <input type="text" name="folio" class="form-control" v-model="formularioLocal.folio" readonly>
                                 </div>
 
                                 <div class="col-md-3 col-sm-12 col-xs-12">
@@ -81,7 +81,7 @@
 
                                 <div class="col-md-3 col-sm-12 col-xs-12">
                                     <label>Nombre del Predio</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" v-model="formularioLocal.nombre_predio">
                                 </div>
 
                                 <div class="col-md-3 col-sm-12 col-xs-12">
@@ -364,18 +364,19 @@ export default {
     data() {
         return {
             titulo: '',
-            Formulario
+            formularioLocal:  Object.assign({}, Formulario)
         }
     },
     created: function(){
+       
          this.$bus.$on('set-folio', (folio) => {
-                this.folio = folio
-         })
 
-         console.log('creando componente');
+                this.formularioLocal.nombre_predio= folio;
+         })
     },
     watch: {
         accion: function() {
+            this.formularioLocal = Object.assign({}, Formulario)
             this.titulo = (this.accion == 'consultar')? 'Detalle de la inspección seleccionada':'Registrar Inspección'
         }
     },
