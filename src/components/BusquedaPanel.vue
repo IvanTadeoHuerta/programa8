@@ -106,7 +106,8 @@ export default {
                     this.setFilaSeleccionada = id                    
                 }              
                 
-            this.$emit('clicEnRegistro',this.setFilaSeleccionada)  
+            this.$emit('clicEnRegistro',this.setFilaSeleccionada)
+            this.$bus.$emit('set-folio', this.setFilaSeleccionada)
         },
         peticionHttpBuscarInspecciones: function(){
 
