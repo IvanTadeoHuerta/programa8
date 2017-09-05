@@ -140,7 +140,7 @@
 
                             <div class="row">
                                 <br>                      
-                                <div class="col-md-3 col-sm-3 col-xs-12">                                          
+                                <div class="col-md-3 col-sm-12 col-xs-12">                                          
                                     <label>Dependencias participantes</label>
                                     <div class="input-group">
                                         <input type="text" class="form-control" readonly>
@@ -293,9 +293,12 @@
 
                             <div class="row">
                                 <br>
+
                                 <div class="col-md-3 col-sm-12 col-xs-12">
-                                    <label>Observaciones</label>
-                                    <textarea class="form-control" name="observaciones" rows="3" cols="5"></textarea>                                          
+                                    <label>Estatus Industria</label>
+                                    <select name="estatus_industria" class="form-control">
+                                        <option value="-1">Seleccione una opción...</option>
+                                    </select>
                                 </div>
 
                                 <div class="col-md-3 col-sm-12 col-xs-12">
@@ -320,12 +323,11 @@
                             </div>
 
                             <div class="row">
-                                <br>
-                                <div class="col-md-3 col-sm-12 col-xs-12">
-                                    <label>Estatus Industria</label>
-                                    <select name="estatus_industria" class="form-control">
-                                        <option value="-1">Seleccione una opción...</option>
-                                    </select>
+                                <br>                      
+
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <label>Observaciones</label>
+                                    <textarea class="form-control" name="observaciones" rows="3" cols="5"></textarea>                                          
                                 </div>
                             </div>
 
