@@ -101,15 +101,19 @@ export default {
     },
     methods:{
         seleccionaRegistro: function(id){ 
-                
+             
                 if(this.setFilaSeleccionada == id){
                     this.setFilaSeleccionada = -1
-                }else{
-                    this.setFilaSeleccionada = id                    
-                }              
                 
-            this.$emit('clicEnRegistro',this.setFilaSeleccionada)
-            //this.$bus.$emit('set-folio', this.setFilaSeleccionada)
+                }else{
+                    this.setFilaSeleccionada = id 
+                          
+                } 
+                
+                let verFormulario = (this.setFilaSeleccionada == -1)? false : true
+                this.$emit('clicEnRegistro',verFormulario)
+
+                //this.$bus.$emit('set-folio', this.setFilaSeleccionada)                
         },
         peticionHttpBuscarInspecciones: function(){
 
@@ -120,18 +124,6 @@ export default {
                 alert('Envia la peticion con criterio y texto a filtrar');
             }            
         }
-    },
-    watch: {
-        /*accion: function() {
-            
-        },
-        filaSeleccionada: function(){
-            if(this.filaSeleccionada == -1) this.setFilaSeleccionada = -1
-        },
-        criterioSeleccionado: function(){
-            this.registros = []
-            this.mostrarError = (this.criterioSeleccionado == -1)? true : false
-        }*/
     }
 }
 </script>

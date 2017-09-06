@@ -22,8 +22,9 @@ export default {
     this.mostrarFormulario = false
   },
   methods:{
-    cambiaVerFormulario: function(){
-       this.mostrarFormulario = !this.mostrarFormulario
+    cambiaVerFormulario: function(verFormulario){
+      
+       this.mostrarFormulario = verFormulario
     }
   },
   components: {
