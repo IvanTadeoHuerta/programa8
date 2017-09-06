@@ -44,7 +44,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!--<template v-if="registros.length > 0">
+                                    <template v-if="registros.length > 0">
                                         <tr @click="seleccionaRegistro(index)"
                                              v-for="(registro, index ) in registros" 
                                              :key="registro.id" 
@@ -62,7 +62,7 @@
                                     </template>
                                     <tr v-else>
                                         <td colspan="7" class="text-center">No hay registros</td>
-                                    </tr>-->
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -77,11 +77,10 @@
 
 export default {
     name: 'busquedapanel',
-    //props: ['accion','filaSeleccionada','opcionesBusqueda'],
+    props: ['opcionesBusqueda'],
     data() {
         return {
-           /* mostrarPanelBusqueda: true,
-            setFilaSeleccionada: this.filaSeleccionada,
+            setFilaSeleccionada: -1,
             criterioSeleccionado: -1,
             mostrarError : false,
             textoIngresado: '',
@@ -94,11 +93,14 @@ export default {
                       {region:'Toluca', municipio:'El Zarco', folio:'10280583', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'},
                       {region:'Valle de bravo', municipio:'Valle de Bravo', folio:'10280583', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'}
                     ],
-            criterios: this.opcionesBusqueda*/
+            criterios: this.opcionesBusqueda
         }
     },
+    created: function(){
+         this.setFilaSeleccionada = -1
+    },
     methods:{
-       /* seleccionaRegistro: function(id){ 
+        seleccionaRegistro: function(id){ 
                 
                 if(this.setFilaSeleccionada == id){
                     this.setFilaSeleccionada = -1
@@ -107,7 +109,7 @@ export default {
                 }              
                 
             this.$emit('clicEnRegistro',this.setFilaSeleccionada)
-            this.$bus.$emit('set-folio', this.setFilaSeleccionada)
+            //this.$bus.$emit('set-folio', this.setFilaSeleccionada)
         },
         peticionHttpBuscarInspecciones: function(){
 
@@ -117,21 +119,11 @@ export default {
                 this.mostrarError = false
                 alert('Envia la peticion con criterio y texto a filtrar');
             }            
-        }*/
+        }
     },
     watch: {
         /*accion: function() {
             
-            if (this.accion == 'consultar') {
-                
-                this.mostrarPanelBusqueda = true
-                
-            } else if (this.accion == 'agregar') {
-                this.mostrarPanelBusqueda = false
-            }
-        },
-        mostrarPanelBusqueda: function(){
-            this.setFilaSeleccionada = -1
         },
         filaSeleccionada: function(){
             if(this.filaSeleccionada == -1) this.setFilaSeleccionada = -1

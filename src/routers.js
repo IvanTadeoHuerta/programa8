@@ -1,10 +1,10 @@
 import AppConsulta from './modulos/AppConsulta.vue'
-import Formulario from './components/FormularioInspeccion.vue'
+import AppRegistro from './components/FormularioInspeccion.vue'
 
 
 const routes = [
-                { path: '/consultar' , component: AppConsulta },
-                { path: '/agregar' , component: Formulario }
+                { path: '/consultar' , component: AppConsulta , name: 'consultar'},
+                { path: '/agregar' , component: AppRegistro , name: 'agregar'}
             ]
 
 export default routes

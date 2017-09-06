@@ -336,7 +336,7 @@
                                 <div class="col-md-3 col-sm-12 col-xs-12">
                                 </div>
                                 <div v-if="this.accion == 'agregar'" class="col-md-3 col-sm-12 col-xs-12">
-                                    <input type="button" class="btn btn-default btn-block" value="Cancelar" @click="CancelarRegistro">
+                                    <router-link to="/consultar" class="btn btn-default btn-block">Cancelar</router-link>
                                 </div>
                                 <div v-if="this.accion == 'consultar'" class="col-md-3 col-sm-12 col-xs-12">
                                     <input type="submit" class="btn btn-default btn-block" value="Eliminar" @click="EliminarInspeccion">
@@ -361,34 +361,25 @@ import Formulario from '../datosFormularios/inspeccion'
 
 export default {
     name: 'formulario',
-    props: ['accion'],
     data() {
         return {
-            titulo: '',            
+            titulo: '',
+            accion: null,           
             formularioLocal:  Object.assign({}, Formulario)
         }
     },
     created: function(){
-       console.log('se creo formualrios')
-        this.$bus.$on('set-folio', (folio) => {
+       this.titulo = (this.$route.name == 'consultar')? 'Detalle de la inspección seleccionada':'Registrar Inspección'
+       this.accion = this.$route.name
+       this.formularioLocal = Object.assign({}, Formulario)
+        /*this.$bus.$on('set-folio', (folio) => {
             this.formularioLocal.nombre_predio= folio;
-        })
-
-     
+        })*/
     },
     mounted: function(){
-        console.log('este es el formulario con jquery', $('#formularioPrincipal'))
-    },
-    watch: {
-        accion: function() {
-            this.formularioLocal = Object.assign({}, Formulario)
-            this.titulo = (this.accion == 'consultar')? 'Detalle de la inspección seleccionada':'Registrar Inspección'
-        }
+       //$('#formularioPrincipal').validate()
     },
     methods:{
-        CancelarRegistro:function(){
-            this.$emit('clicBtnCancelarRegistro')
-        },
         EliminarInspeccion: function(){
             alert('Eliminar')
         },
