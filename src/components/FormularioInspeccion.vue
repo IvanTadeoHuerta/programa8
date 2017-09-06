@@ -369,7 +369,7 @@ export default {
         }
     },
     created: function(){
-       
+       console.log('se creo formualrios')
         this.$bus.$on('set-folio', (folio) => {
             this.formularioLocal.nombre_predio= folio;
         })
@@ -401,6 +401,3 @@ export default {
     }
 }
 </script>
-<style>
-
-</style>

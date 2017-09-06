@@ -9,10 +9,10 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#" @click="mostrarPanelFormulario">{{ menuNombre.Tabular.agregar }}</a>
+                                <router-link to="/agregar">{{ menuNombre.Tabular.agregar }}</router-link>
                             </li>
                             <li>
-                                <a href="#"  @click="ocultarPanelFormulario">{{ menuNombre.Tabular.consultar }}</a>
+                                <router-link to="/consultar">{{ menuNombre.Tabular.consultar }}</router-link>
                             </li>
                         </ul>
                     </li>
@@ -45,6 +45,7 @@
 
 export default {
     name: 'menuoptions',
+    props: ['nombrePrograma'],
     data() {
         return {
             menuNombre: {
@@ -60,20 +61,8 @@ export default {
                     reporteador: 'Reporteador'
                 }
             },
-            NombrePrograma: 'Programa de Inspección y Vigilancia Forestal'
+            NombrePrograma: this.nombrePrograma
         }
-    },
-    methods: {
-        mostrarPanelFormulario: function() {
-            this.$emit('clicVerFormulario')
-        },
-        ocultarPanelFormulario: function() {
-            this.$emit('clicCerrarFormulario')
-        }
-    },
+    }
 }
 </script>
-
-<style>
-
-</style>

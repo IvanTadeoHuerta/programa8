@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
         <br>
-        <div id="rowFind" class="row" v-show="mostrarPanelBusqueda">
+        <div id="rowFind" class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="panel panel-success">
                     <div class="panel-heading">
@@ -44,7 +44,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <template v-if="registros.length > 0">
+                                    <!--<template v-if="registros.length > 0">
                                         <tr @click="seleccionaRegistro(index)"
                                              v-for="(registro, index ) in registros" 
                                              :key="registro.id" 
@@ -62,7 +62,7 @@
                                     </template>
                                     <tr v-else>
                                         <td colspan="7" class="text-center">No hay registros</td>
-                                    </tr>
+                                    </tr>-->
                                 </tbody>
                             </table>
                         </div>
@@ -77,10 +77,10 @@
 
 export default {
     name: 'busquedapanel',
-    props: ['accion','filaSeleccionada','opcionesBusqueda'],
+    //props: ['accion','filaSeleccionada','opcionesBusqueda'],
     data() {
         return {
-            mostrarPanelBusqueda: true,
+           /* mostrarPanelBusqueda: true,
             setFilaSeleccionada: this.filaSeleccionada,
             criterioSeleccionado: -1,
             mostrarError : false,
@@ -94,11 +94,11 @@ export default {
                       {region:'Toluca', municipio:'El Zarco', folio:'10280583', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'},
                       {region:'Valle de bravo', municipio:'Valle de Bravo', folio:'10280583', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'}
                     ],
-            criterios: this.opcionesBusqueda
+            criterios: this.opcionesBusqueda*/
         }
     },
     methods:{
-        seleccionaRegistro: function(id){ 
+       /* seleccionaRegistro: function(id){ 
                 
                 if(this.setFilaSeleccionada == id){
                     this.setFilaSeleccionada = -1
@@ -117,10 +117,10 @@ export default {
                 this.mostrarError = false
                 alert('Envia la peticion con criterio y texto a filtrar');
             }            
-        }
+        }*/
     },
     watch: {
-        accion: function() {
+        /*accion: function() {
             
             if (this.accion == 'consultar') {
                 
@@ -139,7 +139,7 @@ export default {
         criterioSeleccionado: function(){
             this.registros = []
             this.mostrarError = (this.criterioSeleccionado == -1)? true : false
-        }
+        }*/
     }
 }
 </script>

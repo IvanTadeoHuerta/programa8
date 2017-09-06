@@ -1,7 +1,10 @@
-import FormularioInspecion from './components/FormularioInspeccion.vue'
+import AppConsulta from './modulos/AppConsulta.vue'
+import Formulario from './components/FormularioInspeccion.vue'
+
 
 const routes = [
-                { path: '/consultar' , component: FormularioInspecion }
+                { path: '/consultar' , component: AppConsulta },
+                { path: '/agregar' , component: Formulario }
             ]
 
 export default routes
