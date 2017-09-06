@@ -358,21 +358,26 @@
 </template>
 <script>
 import Formulario from '../datosFormularios/inspeccion'
+
 export default {
     name: 'formulario',
     props: ['accion'],
     data() {
         return {
-            titulo: '',
+            titulo: '',            
             formularioLocal:  Object.assign({}, Formulario)
         }
     },
     created: function(){
        
-         this.$bus.$on('set-folio', (folio) => {
+        this.$bus.$on('set-folio', (folio) => {
+            this.formularioLocal.nombre_predio= folio;
+        })
 
-                this.formularioLocal.nombre_predio= folio;
-         })
+     
+    },
+    mounted: function(){
+        console.log('este es el formulario con jquery', $('#formularioPrincipal'))
     },
     watch: {
         accion: function() {
