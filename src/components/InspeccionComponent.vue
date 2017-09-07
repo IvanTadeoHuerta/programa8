@@ -339,13 +339,13 @@
                                     <router-link to="/consultar" class="btn btn-default btn-block">Cancelar</router-link>
                                 </div>
                                 <div v-if="this.accion == 'consultar'" class="col-md-3 col-sm-12 col-xs-12">
-                                    <input type="submit" class="btn btn-default btn-block" value="Eliminar" @click="EliminarInspeccion">
+                                    <input type="submit" class="btn btn-default btn-block" value="Eliminar">
                                 </div>
                                 <div v-if="this.accion == 'consultar'" class="col-md-3 col-sm-12 col-xs-12">
-                                    <input type="submit" class="btn btn-success btn-block" value="Actualizar" @click="ActualizarInspeccion">
+                                    <input type="submit" class="btn btn-success btn-block" value="Actualizar">
                                 </div>
                                 <div v-else-if="this.accion == 'agregar'" class="col-md-3 col-sm-12 col-xs-12">
-                                    <input type="submit" class="btn btn-success btn-block" value="Agregar" @click="AgregarInspeccion">
+                                    <input type="submit" class="btn btn-success btn-block" value="Agregar">
                                 </div>
                             </div>
                             
@@ -358,6 +358,7 @@
 </template>
 <script>
 import Formulario from '../datosFormularios/inspeccion'
+import ValidarFormulario from '../validaciones/inspeccion'
 
 export default {
     name: 'formulario',
@@ -377,19 +378,15 @@ export default {
         })*/
     },
     mounted: function(){
-       $('#formularioPrincipal').validate({
-           rules: {
-                razon_social: "required"
-                }
-       })
-       console.log('Se agrego el metodo validate');
+        ValidarFormulario($('#formularioPrincipal'))
+        // $('#formularioPrincipal')
     },
     methods:{
         EliminarInspeccion: function(){
-            alert('Eliminar')
+            //alert('Eliminar')
         },
         ActualizarInspeccion: function(){
-            alert('Actualizar')
+            //alert('Actualizar')
         },
         AgregarInspeccion: function (){
             //this.$alerta.error('Ocurrio algo mal ejemplo')
@@ -401,7 +398,7 @@ export default {
 }
 </script>
 <style scoped>
-    span > label{
+    label>span {
         color: red
     }
 </style>
