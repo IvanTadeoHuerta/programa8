@@ -392,7 +392,10 @@ export default {
             alert('Actualizar')
         },
         AgregarInspeccion: function (){
-            alert('Agregar')
+            //this.$alerta.error('Ocurrio algo mal ejemplo')
+            //this.$alerta.exito('se registro correctamten')
+            //this.$alerta.info('Titulo ejemplo','','<h4><b>Este es un mensaje dentro de html</b></h4>')
+            
         }
     }
 }

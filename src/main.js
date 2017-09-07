@@ -3,9 +3,13 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import EventBus from './plugins/event-bus'
 import routes from './routers.js'
+import Alerta from './plugins/alerta'
 
+Vue.use(Alerta)
 Vue.use(EventBus)
 Vue.use(VueRouter)
+
+
 const router = new VueRouter({ routes,  mode: 'history' })
 
 new Vue({
@@ -13,3 +17,4 @@ new Vue({
   render: h => h(App),
   router
 })
+
