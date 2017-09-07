@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import Cabecera from './components/Cabecera.vue'
-import Menuoptions from './components/MenuOptions.vue'
+import Cabecera from './components/CabeceraComponent.vue'
+import Menuoptions from './components/MenuComponent.vue'
 import inspeccionService from './services/inspeccion'
 
 export default {

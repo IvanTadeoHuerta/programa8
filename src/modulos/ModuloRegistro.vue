@@ -7,7 +7,7 @@
 <script>
 
 
-import Formulario from '../components/FormularioInspeccion.vue'
+import Formulario from '../components/InspeccionComponent.vue'
 
 
 export default {

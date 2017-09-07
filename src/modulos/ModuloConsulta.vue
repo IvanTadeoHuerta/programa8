@@ -7,8 +7,8 @@
 
 <script>
 
-import Busquedapanel from '../components/BusquedaPanel.vue'
-import Formulario from '../components/FormularioInspeccion.vue'
+import Busquedapanel from '../components/BusquedaComponent.vue'
+import Formulario from '../components/InspeccionComponent.vue'
 import inspeccionService from '../services/inspeccion'
 
 export default {

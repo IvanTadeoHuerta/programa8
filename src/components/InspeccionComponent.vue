@@ -377,7 +377,12 @@ export default {
         })*/
     },
     mounted: function(){
-       //$('#formularioPrincipal').validate()
+       $('#formularioPrincipal').validate({
+           rules: {
+                razon_social: "required"
+                }
+       })
+       console.log('Se agrego el metodo validate');
     },
     methods:{
         EliminarInspeccion: function(){
@@ -392,3 +397,9 @@ export default {
     }
 }
 </script>
+<style scoped>
+    span > label{
+        color: red
+    }
+</style>
+
