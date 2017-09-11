@@ -1,6 +1,13 @@
 import regex from './regex'
 
-function validarFormulario (element) {
+const validarFormulario = {}
+
+
+
+validarFormulario.agregarPlugin = function(element) {
+
+    if (element.length > 0) element.validate().destroy()
+
     element.validate({
         errorElement: 'span',
         wrapper: 'label',

@@ -25,6 +25,7 @@
                                     <label>Región</label>
                                     <select name="region" class="form-control">
                                         <option value="-1">Seleccione una opción...</option>
+                                          <option value="1">tol.</option>
                                     </select>
                                </div>
 
@@ -49,6 +50,7 @@
                                     <label>Año</label>
                                     <select name="anio" class="form-control">
                                         <option value="-1">Seleccione una opción...</option>
+                                        <option value="2005">2005</option>
                                     </select>
                                 </div>
 
@@ -339,13 +341,13 @@
                                     <router-link to="/consultar" class="btn btn-default btn-block">Cancelar</router-link>
                                 </div>
                                 <div v-if="this.accion == 'consultar'" class="col-md-3 col-sm-12 col-xs-12">
-                                    <input type="submit" class="btn btn-default btn-block" value="Eliminar">
+                                    <input type="button" class="btn btn-default btn-block" @click="submitFormulario('eliminar')" value="Eliminar">
                                 </div>
                                 <div v-if="this.accion == 'consultar'" class="col-md-3 col-sm-12 col-xs-12">
-                                    <input type="submit" class="btn btn-success btn-block" value="Actualizar">
+                                    <input type="button" class="btn btn-success btn-block" @click="submitFormulario('consultar')" value="Actualizar">
                                 </div>
                                 <div v-else-if="this.accion == 'agregar'" class="col-md-3 col-sm-12 col-xs-12">
-                                    <input type="submit" class="btn btn-success btn-block" value="Agregar">
+                                    <input type="button" class="btn btn-success btn-block" @click="submitFormulario('agregar')" value="Agregar">
                                 </div>
                             </div>
                             
@@ -358,7 +360,7 @@
 </template>
 <script>
 import Formulario from '../datosFormularios/inspeccion'
-import ValidarFormulario from '../validaciones/inspeccion'
+import validarFormulario from '../validaciones/inspeccion'
 
 export default {
     name: 'formulario',
@@ -378,28 +380,21 @@ export default {
         })*/
     },
     mounted: function(){
-        ValidarFormulario($('#formularioPrincipal'))
-        // $('#formularioPrincipal')
+        validarFormulario.agregarPlugin($('#formularioPrincipal'))
     },
     methods:{
-        EliminarInspeccion: function(){
-            //alert('Eliminar')
-        },
-        ActualizarInspeccion: function(){
-            //alert('Actualizar')
-        },
-        AgregarInspeccion: function (){
+        submitFormulario: function(accion){
+            $('#formularioPrincipal').validate()
+            alert('formulario: '+  $('#formularioPrincipal').valid())
+            console.log('========================?')
+             
             //this.$alerta.error('Ocurrio algo mal ejemplo')
             //this.$alerta.exito('se registro correctamten')
             //this.$alerta.info('Titulo ejemplo','','<h4><b>Este es un mensaje dentro de html</b></h4>')
-            
         }
+
     }
 }
 </script>
-<style scoped>
-    label>span {
-        color: red
-    }
-</style>
+
 

@@ -13,16 +13,10 @@ const inspeccionService = {}
 inspeccionService.cargaCatalogos = function(action, tableName ){
 
     return objetoTrae.get(config.Service.cargaInicial, {
-        //params: { action: action, tableName: tableName }
         params: { action , tableName }
     })
     .then(res => res.data)
 }
-
-
-
-
-
 
 export default inspeccionService
 
