@@ -1,11 +1,16 @@
 <template>
   <div>
     <formulario @enviaDatos="recibeDatos"></formulario>
-    <multiregistro 
-                :folioSelecccionado="folio" 
-                :descriptivoMultiRegistro="descriptivo" 
-                :tipoMultiRegistro="tipo"
-                :aux="auxMostrar">
+    <multiregistro>
+       <div slot="header">
+              <h5 class="modal-title col-xs-12 col-sm-12 col-md-11 col-lg-11">
+                  <b>{{ descriptivo | mayusculas | titulo }}</b>
+                  <p><b>Folio:</b>{{folio}}</p>
+              </h5>
+              <button type="button" class="btn btn-success col-xs-12 col-sm-12 col-md-1 col-lg-1">
+                   <span style="color: white" class="glyphicon glyphicon-plus"></span>
+              </button>
+       </div>
     </multiregistro>
   </div>
 </template>
@@ -21,16 +26,14 @@ export default {
   data() {
     return {
       folio: null,
-      descriptivo: null,
-      tipo: null,
-      auxMostrar: false
+      descriptivo: '',
+      tipo: null
     }
   },
   created: function() {
     this.folio = null
-    this.descriptivo = null
+    this.descriptivo = ''
     this.tipo = null
-    this.auxMostrar = false
   },
   components: {
     Formulario,
@@ -41,7 +44,15 @@ export default {
       this.folio = folio
       this.descriptivo = descriptivo
       this.tipo = tipo
-      this.auxMostrar = !this.auxMostrar
+      $('#modalMultiRegistros').modal('show')
+    }
+  },
+  filters: {
+    mayusculas(texto) {
+      return texto.toUpperCase()
+    },
+    titulo(texto) {
+      return `MULTIREGISTRO ${texto}`
     }
   }
 }
