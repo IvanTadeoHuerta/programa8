@@ -11,6 +11,15 @@
                    <span style="color: white" class="glyphicon glyphicon-plus"></span>
               </button>
        </div>
+       <template slot="body">
+            <dependencias v-if="tipo=='dependencias'"></dependencias>
+            <vehiculos v-else-if="tipo=='vehiculos'"></vehiculos>
+            <personas v-else-if="tipo=='personas'"></personas>
+            <bienes v-else-if="tipo == 'bienes'"></bienes>
+            <predios v-else-if="tipo == 'predios'"></predios>
+            <inspectores v-else-if="tipo == 'inspectores'"></inspectores>
+            <archivos v-else-if="tipo == 'archivos'"></archivos>
+       </template>
     </multiregistro>
   </div>
 </template>
@@ -20,6 +29,35 @@
 
 import Formulario from '../components/InspeccionComponent.vue'
 import Multiregistro from '../components/MultiRegistroComponent.vue'
+
+
+let Dependencias = {
+  template: '<div>A custom dependencias!</div>'
+}
+
+let Vehiculos = {
+  template: '<div>A custom Vehiculos!</div>'
+}
+
+let Personas = {
+  template: '<div>A custom Personas!</div>'
+}
+
+let Bienes = {
+  template: '<div>A custom Bienes!</div>'
+}
+
+let Predios = {
+  template: '<div>A custom Predios!</div>'
+}
+
+let Inspectores = {
+  template: '<div>A custom Inspectores!</div>'
+}
+
+let Archivos = {
+  template: '<div>A custom Archivos!</div>'
+}
 
 export default {
   name: 'appRegistro',
@@ -37,7 +75,14 @@ export default {
   },
   components: {
     Formulario,
-    Multiregistro
+    Multiregistro,
+    Dependencias,
+    Vehiculos,
+    Personas,
+    Bienes,
+    Predios,
+    Inspectores,
+    Archivos
   },
   methods: {
     recibeDatos(folio, descriptivo, tipo) {

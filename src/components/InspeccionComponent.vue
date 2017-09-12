@@ -264,7 +264,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" readonly>
                                         <span class="input-group-btn">
-                                            <button type="button" class="btn btn-success multiregistro" @click="multiRegistro('inspector forestal','inspector')">Registros</button>
+                                            <button type="button" class="btn btn-success multiregistro" @click="multiRegistro('inspector forestal','inspectores')">Registros</button>
                                         </span>
                                     </div>
                                 </div>
