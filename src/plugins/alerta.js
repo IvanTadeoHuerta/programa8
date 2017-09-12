@@ -36,6 +36,9 @@ alerta.install = function (Vue) {
     }
 }
 
-
+//Así usar en  los componentes
+//this.$alerta.error('Ocurrio algo mal ejemplo')
+//this.$alerta.exito('se registro correctamten')
+//this.$alerta.info('Titulo ejemplo','','<h4><b>Este es un mensaje dentro de html</b></h4>')
 
 export default alerta

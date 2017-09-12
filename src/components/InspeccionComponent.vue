@@ -147,7 +147,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" readonly>
                                         <span class="input-group-btn">
-                                            <button type="button"  class="btn btn-success multiregistro" data-multi="dependencias">Registros</button>
+                                            <button type="button"  class="btn btn-success multiregistro"  @click="multiRegistro('dependencias participantes')">Registros</button>
                                         </span>
                                     </div> 
                                 </div>                                  
@@ -162,7 +162,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" readonly>
                                         <span class="input-group-btn">
-                                            <button type="button" class="btn btn-success multiregistro"  data-multi="vehiculosAsegurados">Registros</button>
+                                            <button type="button" class="btn btn-success multiregistro"  @click="multiRegistro('vehículos asegurados')">Registros</button>
                                         </span>
                                     </div>
                                 </div>
@@ -185,7 +185,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" readonly>
                                         <span class="input-group-btn">
-                                            <button type="button"  class="btn btn-success multiregistro" data-multi="personasAseguradas">Registros</button>
+                                            <button type="button"  class="btn btn-success multiregistro" @click="multiRegistro('personas aseguradas')">Registros</button>
                                         </span>
                                     </div>
                                 </div>
@@ -200,7 +200,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" readonly>
                                         <span class="input-group-btn">
-                                            <button type="button" class="btn btn-success multiregistro" data-multi="bienes">Registros</button>
+                                            <button type="button" class="btn btn-success multiregistro" @click="multiRegistro('bienes y productos')">Registros</button>
                                         </span>
                                     </div>
                                 </div>
@@ -213,7 +213,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" readonly>
                                         <span class="input-group-btn">
-                                            <button type="button" class="btn btn-success multiregistro" data-multi="predios">Registros</button>
+                                            <button type="button" class="btn btn-success multiregistro" @click="multiRegistro('predios')">Registros</button>
                                         </span>
                                     </div>
                                 </div>
@@ -264,7 +264,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" readonly>
                                         <span class="input-group-btn">
-                                            <button type="button" class="btn btn-success multiregistro" data-multi="inspector">Registros</button>
+                                            <button type="button" class="btn btn-success multiregistro" @click="multiRegistro('inspector forestal')">Registros</button>
                                         </span>
                                     </div>
                                 </div>
@@ -308,7 +308,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" readonly>
                                         <span class="input-group-btn">
-                                            <button type="button" class="btn btn-success multiregistro" data-multi="archivos">Registros</button>
+                                            <button type="button" class="btn btn-success multiregistro" @click="multiRegistro('archivos')">Registros</button>
                                         </span>
                                     </div>
                                 </div>
@@ -344,7 +344,7 @@
                                     <input type="button" class="btn btn-default btn-block" @click="submitFormulario('eliminar')" value="Eliminar">
                                 </div>
                                 <div v-if="this.accion == 'consultar'" class="col-md-3 col-sm-12 col-xs-12">
-                                    <input type="button" class="btn btn-success btn-block" @click="submitFormulario('consultar')" value="Actualizar">
+                                    <input type="button" class="btn btn-success btn-block" @click="submitFormulario('actualizar')" value="Actualizar">
                                 </div>
                                 <div v-else-if="this.accion == 'agregar'" class="col-md-3 col-sm-12 col-xs-12">
                                     <input type="button" class="btn btn-success btn-block" @click="submitFormulario('agregar')" value="Agregar">
@@ -367,13 +367,15 @@ export default {
     data() {
         return {
             titulo: '',
-            accion: null,           
+            accion: null,
+            bloquearMultiRegistro: true,           
             formularioLocal:  Object.assign({}, Formulario)
         }
     },
     created: function(){
        this.titulo = (this.$route.name == 'consultar')? 'Detalle de la inspección seleccionada':'Registrar Inspección'
        this.accion = this.$route.name
+       this.bloquearMultiRegistro = true
        this.formularioLocal = Object.assign({}, Formulario)
         /*this.$bus.$on('set-folio', (folio) => {
             this.formularioLocal.nombre_predio= folio;
@@ -383,18 +385,39 @@ export default {
         validarFormulario.agregarPlugin($('#formularioPrincipal'))
     },
     methods:{
-        submitFormulario: function(accion){
-            $('#formularioPrincipal').validate()
-            alert('formulario: '+  $('#formularioPrincipal').valid())
-            console.log('========================?')
-             
-            //this.$alerta.error('Ocurrio algo mal ejemplo')
-            //this.$alerta.exito('se registro correctamten')
-            //this.$alerta.info('Titulo ejemplo','','<h4><b>Este es un mensaje dentro de html</b></h4>')
+        submitFormulario: function(accion){ 
+            if(validarFormulario.esValido($('#formularioPrincipal'))){
+                switch(accion){
+                    case 'agregar':
+                        this.$alerta.exito('Se registro ok')
+                    break;
+                    case 'actualizar':
+                        this.$alerta.exito('Se actualizo ok')
+                    break;
+                    case 'eliminar':
+                        this.$alerta.exito('Se elimino ok')
+                    break;
+                    default:
+                        this.$alerta.error('Acción no disponible')
+                }
+            }
+           
+        },
+
+        multiRegistro: function(tipoMultiRegistro){
+            if(this.bloquearMultiRegistro){
+                this.$alerta.info('Información','',
+                                    `Para agregar multiregistros ${tipoMultiRegistro} guarde primero la ficha principal. 
+                                    Haciendo <b>clic</b> en el boton <b>Agregar</b>`)
+            }else{
+                alert('agrega')
+            }
+            
         }
 
     }
 }
+
 </script>
 
 

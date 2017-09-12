@@ -34,5 +34,10 @@ validarFormulario.agregarPlugin = function(element) {
     regex()
 }
 
+validarFormulario.esValido = function (form){
+    form.validate()
+    return form.valid()
+}
+
 export default validarFormulario
 
