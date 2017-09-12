@@ -1,5 +1,5 @@
 <template>
-   <div>
+  <div>
     <busquedapanel @clicEnRegistro="cambiaVerFormulario"></busquedapanel>
     <formulario v-show="mostrarFormulario"></formulario>
   </div>
@@ -15,16 +15,16 @@ export default {
   name: 'appConsulta',
   data() {
     return {
-      mostrarFormulario : false
+      mostrarFormulario: false
     }
   },
-  created:function(){
+  created: function() {
     this.mostrarFormulario = false
   },
-  methods:{
-    cambiaVerFormulario: function(verFormulario){
-      
-       this.mostrarFormulario = verFormulario
+  methods: {
+    cambiaVerFormulario: function(verFormulario) {
+
+      this.mostrarFormulario = verFormulario
     }
   },
   components: {
