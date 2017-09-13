@@ -1,7 +1,7 @@
 <template>
   <div>
     <formulario @enviaDatos="recibeDatos"></formulario>
-    <multiregistro :setTipo="tipo" :setFolio="folio" :setDescriptivo="descriptivo"></multiregistro>
+    <multiregistro :setTipo="tipo" :setFolio="folio" :setDescriptivo="descriptivo" :setReset="reset"></multiregistro>
   </div>
 </template>
 

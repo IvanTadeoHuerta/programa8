@@ -200,7 +200,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" readonly>
                                         <span class="input-group-btn">
-                                            <button type="button" class="btn btn-success multiregistro" @click="multiRegistro('bienes y productos','bienes')">Registros</button>
+                                            <button type="button" class="btn btn-success multiregistro" @click="multiRegistro('bienes y productos','productos')">Registros</button>
                                         </span>
                                     </div>
                                 </div>

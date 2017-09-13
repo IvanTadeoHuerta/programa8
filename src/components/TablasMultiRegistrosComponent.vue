@@ -107,7 +107,7 @@
         }
     }
 
-    export let Bienes = {
+    export let Productos = {
         template:  `<table class="table">
                         <thead>
                             <tr>

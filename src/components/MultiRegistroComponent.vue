@@ -22,7 +22,7 @@
                         <dependencias v-if="tipo=='dependencias'"></dependencias>
                         <vehiculos v-else-if="tipo=='vehiculos'"></vehiculos>
                         <personas v-else-if="tipo=='personas'"></personas>
-                        <bienes v-else-if="tipo == 'bienes'"></bienes>
+                        <productos v-else-if="tipo == 'productos'"></productos>
                         <predios v-else-if="tipo == 'predios'"></predios>
                         <inspectores v-else-if="tipo == 'inspectores'"></inspectores>
                         <archivos v-else-if="tipo == 'archivos'"></archivos>
@@ -30,12 +30,12 @@
                     </div>
                     <div v-show="verFlechaRegreso">
                         <form-dependencia v-if="tipo=='dependencias'"></form-dependencia>
-                        <form-vehiculos v-else-if="tipo=='vehiculos'"></form-vehiculos>
-                        <form-personas v-else-if="tipo=='personas'"></form-personas>
-                        <form-bienes v-else-if="tipo == 'bienes'"></form-bienes>
-                        <form-predios v-else-if="tipo == 'predios'"></form-predios>
-                        <form-inspectores v-else-if="tipo == 'inspectores'"></form-inspectores>
-                        <form-archivos v-else-if="tipo == 'archivos'"></form-archivos>
+                        <form-vehiculo v-else-if="tipo=='vehiculos'"></form-vehiculo>
+                        <form-persona-asegurada v-else-if="tipo=='personas'"></form-persona-asegurada>
+                        <form-producto v-else-if="tipo == 'productos'"></form-producto>
+                        <form-predio v-else-if="tipo == 'predios'"></form-predio>
+                        <form-inspector-forestal v-else-if="tipo == 'inspectores'"></form-inspector-forestal>
+                        <form-archivo v-else-if="tipo == 'archivos'"></form-archivo>
                         <div v-else>No se encontró multiregistro. Contacte con el administrador del sistema</div>
                     </div>
                 </div>
@@ -49,16 +49,23 @@
 
 <script>
 
-import FormDependencia from '../components/DependenciasComponent.vue'
+import FormDependencia from '../components/DependenciaComponent.vue'
+import FormArchivo from '../components/ArchivoComponent.vue'
+import FormInspectorForestal from '../components/InspectorForestalComponent.vue'
+import FormPersonaAsegurada from '../components/PersonaAseguradaComponent.vue'
+import FormPredio from '../components/PredioComponent.vue'
+import FormProducto from '../components/ProductoComponent.vue'
+import FormVehiculo from '../components/VehiculoComponent.vue'
+
 import {
     Dependencias, Vehiculos,
-    Personas, Bienes, Predios,
+    Personas, Productos, Predios,
     Inspectores, Archivos
 } from '../components/TablasMultiRegistrosComponent.vue'
 
 export default {
     name: 'multiRegistro',
-    props: ['setTipo','setFolio','setDescriptivo'],
+    props: ['setTipo','setFolio','setDescriptivo','setReset'],
     data(){
         return {
             verFlechaRegreso: false,
@@ -86,22 +93,25 @@ export default {
         Dependencias,
         Vehiculos,
         Personas,
-        Bienes,
+        Productos,
         Predios,
         Inspectores,
         Archivos,
-        FormDependencia
+        FormDependencia,
+        FormArchivo,
+        FormInspectorForestal,
+        FormPersonaAsegurada,
+        FormPredio,
+        FormProducto,
+        FormVehiculo
     },
     watch:{
-        setTipo: function(){
+        setReset: function(){
             this.tipo=this.setTipo
             this.descriptivo=this.setDescriptivo
             this.folio=this.setFolio
-        },
-        setFolio: function(){
-            this.tipo=this.setTipo
-            this.descriptivo=this.setDescriptivo
-            this.folio=this.setFolio
+            this.verBtnAgregar = true
+            this.verFlechaRegreso = false
         }
     },
     filters: {

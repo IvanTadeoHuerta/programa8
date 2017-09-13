@@ -2,7 +2,7 @@
   <div>
     <busquedapanel @clicEnRegistro="cambiaVerFormulario"></busquedapanel>
     <formulario v-show="mostrarFormulario" @enviaDatos="recibeDatos"></formulario>
-    <multiregistro :setTipo="tipo" :setFolio="folio" :setDescriptivo="descriptivo"></multiregistro>
+    <multiregistro :setTipo="tipo" :setFolio="folio" :setDescriptivo="descriptivo" :setReset="reset"></multiregistro>
   </div>
 </template>
 
