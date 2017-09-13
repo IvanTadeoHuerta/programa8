@@ -1,5 +1,5 @@
 <template>
- 	<form id="vehiculosAsegurados">
+ 	<form id="vehiculo">
     	<div class="col-lg-12">
     		<div class="form-group">
                 <div class="row">
@@ -45,3 +45,8 @@
     	</div>
     </form>
 </template>
+<script>
+export default {
+    name:'formVehiculo'
+}
+</script>

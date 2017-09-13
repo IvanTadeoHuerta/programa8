@@ -1,5 +1,5 @@
 <template>
-	<form id="personasAseguradasInfraccionadas">
+	<form id="personaAsegurada">
     	<div class="col-lg-12">
     		<div class="form-group">
     			<div class="row">
@@ -70,3 +70,8 @@
     	</div>
     </form>
 </template>
+<script>
+export default {
+  name: 'formPersonaAsegurada'
+}
+</script>

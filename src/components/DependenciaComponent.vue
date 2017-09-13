@@ -1,5 +1,5 @@
 <template>
-	<form id="dependenciasParticipantes">
+	<form id="dependencia">
     	<div class="col-lg-12">
     		<div class="form-group">
     			<div class="row">

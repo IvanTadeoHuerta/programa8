@@ -1,5 +1,5 @@
 <template>
-	<form id="bienesProductos">
+	<form id="producto">
     	<div class="col-lg-12">
     		<div class="form-group">
     			<div class="row">
@@ -115,3 +115,8 @@
     	</div>
     </form>
 </template>
+<script>
+export default {
+  name: 'formProducto'
+}
+</script>

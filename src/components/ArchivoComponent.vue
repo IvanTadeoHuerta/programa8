@@ -1,5 +1,5 @@
 <template>
-	<form id="archivos">
+	<form id="archivo">
     	<div class="col-lg-12">
     		<div class="form-group">
     			<div class="row">
@@ -59,3 +59,8 @@
     	</div>
     </form>
 </template>
+<script>
+export default {
+  name: 'formArchivo'
+}
+</script>
