@@ -24,7 +24,9 @@
             <archivos v-else-if="tipo == 'archivos'"></archivos>
             <div v-else>No se encontró  multiregistro. Contacte con el administrador del sistema</div>
        </template>
-       <template slot="formularioMultiRegistro"></template>
+       <template slot="formularioMultiRegistro">
+         <form-dependencia></form-dependencia>
+       </template>
     </multiregistro>
   </div>
 </template>
@@ -34,6 +36,7 @@
 
 import Formulario from '../components/InspeccionComponent.vue'
 import Multiregistro from '../components/MultiRegistroComponent.vue'
+import FormDependencia from '../components/DependenciasComponent.vue'
 import {Dependencias,Vehiculos,
         Personas,Bienes,Predios, 
         Inspectores,Archivos} from '../components/TablasMultiRegistrosComponent.vue'
@@ -51,7 +54,8 @@ export default {
         Bienes,
         Predios,
         Inspectores,
-        Archivos
+        Archivos,
+        FormDependencia
   }
 }
 </script>
