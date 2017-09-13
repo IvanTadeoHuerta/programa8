@@ -14,7 +14,7 @@
                    <span style="color: white" class="glyphicon glyphicon-plus"></span>
               </button>
        </div>
-       <template slot="tablaRegistros">
+       <div slot="tablaRegistros" v-show="verBtnAgregar">
             <dependencias v-if="tipo=='dependencias'"></dependencias>
             <vehiculos v-else-if="tipo=='vehiculos'"></vehiculos>
             <personas v-else-if="tipo=='personas'"></personas>
@@ -23,10 +23,11 @@
             <inspectores v-else-if="tipo == 'inspectores'"></inspectores>
             <archivos v-else-if="tipo == 'archivos'"></archivos>
             <div v-else>No se encontró  multiregistro. Contacte con el administrador del sistema</div>
-       </template>
-       <template slot="formularioMultiRegistro">
-         <form-dependencia></form-dependencia>
-       </template>
+       </div>
+        <div slot="formularioMultiRegistro" v-show="verFlechaRegreso">
+            <form-dependencia v-if="tipo=='dependencias'"></form-dependencia>
+            <div v-else>No se encontró  multiregistro. Contacte con el administrador del sistema</div>
+        </div>
     </multiregistro>
   </div>
 </template>
