@@ -5,12 +5,12 @@
     			<div class="row">
     				<div class="col-md-6 col-sm-12 col-xs-12">
                         <label>Consecutivo</label>
-    					<input type="text" name="consecutivo" class="form-control" value="${this[posicion].consecutivo}">
+    					<input type="text" name="consecutivo" class="form-control" value="">
     				</div>
 
     				<div class="col-md-6 col-sm-12 col-xs-12">
                         <label>Folio</label>
-    					<input type="text" name="folio" class="form-control" value="${this[posicion].folio}">
+    					<input type="text" name="folio" class="form-control" value="">
     				</div>
     			</div>
     		</div>
