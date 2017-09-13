@@ -26,7 +26,13 @@
             <div v-else>No se encontró  multiregistro. Contacte con el administrador del sistema</div>
        </div>
        <div slot="formularioMultiRegistro" v-show="verFlechaRegreso">
-           <form-dependencia v-if="tipo=='dependencias'"></form-dependencia>
+            <form-dependencia v-if="tipo=='dependencias'"></form-dependencia>
+            <form-vehiculos v-else-if="tipo=='vehiculos'"></form-vehiculos>
+            <form-personas v-else-if="tipo=='personas'"></form-personas>
+            <form-bienes v-else-if="tipo == 'bienes'"></form-bienes>
+            <form-predios v-else-if="tipo == 'predios'"></form-predios>
+            <form-inspectores v-else-if="tipo == 'inspectores'"></form-inspectores>
+            <form-archivos v-else-if="tipo == 'archivos'"></form-archivos>
            <div v-else>No se encontró  multiregistro. Contacte con el administrador del sistema</div>
        </div>
     </multiregistro>
