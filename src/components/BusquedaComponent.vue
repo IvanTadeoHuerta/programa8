@@ -45,7 +45,7 @@
                                 </thead>
                                 <tbody>
                                     <template v-if="registros.length > 0">
-                                        <tr @click="seleccionaRegistro(index)"
+                                        <tr @click="seleccionaRegistro(index, registro.folio)"
                                              v-for="(registro, index ) in registros" 
                                              :key="registro.id" 
                                              :class="{isSeleccionado: setFilaSeleccionada == index}"
@@ -85,13 +85,13 @@ export default {
             mostrarError : false,
             textoIngresado: '',
             registros:  [
-                      {region:'Toluca', municipio:'Santiago', folio:'10280583', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'},
-                      {region:'Toluca', municipio:'Ocoyoacac', folio:'10280583', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'},
+                      {region:'Toluca', municipio:'Santiago', folio:'10280581', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'},
+                      {region:'Toluca', municipio:'Ocoyoacac', folio:'10280582', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'},
                       {region:'Toluca', municipio:'Lerma', folio:'10280583', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'},
-                      {region:'Toluca', municipio:'San Mateo', folio:'10280583', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'},
-                      {region:'Toluca', municipio:'Salazar', folio:'10280583', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'},
-                      {region:'Toluca', municipio:'El Zarco', folio:'10280583', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'},
-                      {region:'Valle de bravo', municipio:'Valle de Bravo', folio:'10280583', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'}
+                      {region:'Toluca', municipio:'San Mateo', folio:'10280584', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'},
+                      {region:'Toluca', municipio:'Salazar', folio:'10280585', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'},
+                      {region:'Toluca', municipio:'El Zarco', folio:'10280586', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'},
+                      {region:'Valle de bravo', municipio:'Valle de Bravo', folio:'10280587', nombre:'Nombre Predio', codigo:'52730', registro:'ASCXZS', estatus:'ACTIVO'}
                     ],
             criterios: this.opcionesBusqueda
         }
@@ -100,7 +100,7 @@ export default {
          this.setFilaSeleccionada = -1
     },
     methods:{
-        seleccionaRegistro: function(id){ 
+        seleccionaRegistro: function(id, folio){ 
              
                 if(this.setFilaSeleccionada == id){
                     this.setFilaSeleccionada = -1
@@ -112,8 +112,7 @@ export default {
                 
                 let verFormulario = (this.setFilaSeleccionada == -1)? false : true
                 this.$emit('clicEnRegistro',verFormulario)
-
-                //this.$bus.$emit('set-folio', this.setFilaSeleccionada)                
+                this.$bus.$emit('set-folio', folio)                
         },
         peticionHttpBuscarInspecciones: function(){
 

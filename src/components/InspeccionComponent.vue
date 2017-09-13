@@ -374,14 +374,19 @@ export default {
         }
     },
     created: function(){
-       this.titulo = (this.$route.name == 'consultar')? 'Detalle de la inspección seleccionada':'Registrar Inspección'
+       if(this.$route.name == 'consultar'){
+            this.titulo = 'Detalle de la inspección seleccionada'
+            this.bloquearMultiRegistro = false
+       }else{
+            this.titulo = 'Registrar Inspección'
+            this.bloquearMultiRegistro = true
+       } 
        this.accion = this.$route.name
-       this.bloquearMultiRegistro = true
        this.folio = null
        this.formularioLocal = Object.assign({}, Formulario)
-        /*this.$bus.$on('set-folio', (folio) => {
-            this.formularioLocal.nombre_predio= folio;
-        })*/
+       this.$bus.$on('set-folio', (folio) => {
+            this.folio = folio
+        })
     },
     mounted: function(){
         validarFormulario.agregarPlugin($('#formularioPrincipal'))
@@ -409,10 +414,11 @@ export default {
         },
 
         multiRegistro: function(textoMultiRegistro,tipo){
+             
             if(this.bloquearMultiRegistro){
                 this.$alerta.info('Información','',
                                     `Para agregar multiregistros ${textoMultiRegistro} guarde primero la ficha principal. 
-                                    Haciendo <b>clic</b> en el boton <b>Agregar</b>`)
+                                    Haciendo <b>clic</b> en el boton <b>${this.accion}</b>`)
             }else{
                 this.$emit('enviaDatos',this.folio, textoMultiRegistro , tipo)
             }
