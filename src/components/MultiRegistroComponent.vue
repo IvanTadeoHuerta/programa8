@@ -8,7 +8,8 @@
                     </div>                    
                 </div>
                 <div class="modal-body" style="max-height: 400px; overflow-y:auto;">                    
-                    <slot name="body">Opción no valida de multiregistro. Si el problema continúa contacte al administrador del sistema</slot>      
+                    <slot name="tablaRegistros"></slot> 
+                    <slot name="formularioMultiRegistro"></slot>      
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

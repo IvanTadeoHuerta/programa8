@@ -5,14 +5,17 @@
     <multiregistro>
        <div slot="header">
               <h5 class="modal-title col-xs-12 col-sm-12 col-md-11 col-lg-11">
+                  <a href="#" @click.prevent v-show="verFlechaRegreso"><span class="glyphicon glyphicon-chevron-left"></span></a>
                   <b>{{ descriptivo | mayusculas | titulo }}</b>
-                  <p><b>Folio:</b>{{folio}}</p>
+                  <p :class="{margenFolio: verFlechaRegreso}"><b>Folio:</b>{{folio}}</p>
               </h5>
-              <button type="button" class="btn btn-success col-xs-12 col-sm-12 col-md-1 col-lg-1">
+              <button type="button" class="btn btn-success col-xs-12 col-sm-12 col-md-1 col-lg-1"
+                   @click="agregaMultiRegistro(tipo)"
+                   v-show="verBtnAgregar">
                    <span style="color: white" class="glyphicon glyphicon-plus"></span>
               </button>
        </div>
-       <template slot="body">
+       <template slot="tablaRegistros">
             <dependencias v-if="tipo=='dependencias'"></dependencias>
             <vehiculos v-else-if="tipo=='vehiculos'"></vehiculos>
             <personas v-else-if="tipo=='personas'"></personas>
@@ -22,6 +25,7 @@
             <archivos v-else-if="tipo == 'archivos'"></archivos>
             <div v-else>No se encontró  multiregistro. Contacte con el administrador del sistema</div>
        </template>
+       <template slot="formularioMultiRegistro"></template>
     </multiregistro>
   </div>
 </template>
@@ -68,7 +72,8 @@ export default {
   }
 }
 </script>
-
 <style>
-
+  .margenFolio{
+     padding-left: 1.2em
+  }
 </style>
