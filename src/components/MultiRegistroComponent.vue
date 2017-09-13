@@ -5,7 +5,7 @@
                 <div class="modal-header">
                     <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <h5 class="modal-title col-xs-12 col-sm-12 col-md-11 col-lg-11">
-                            <a href="#" @click.prevent v-show="verFlechaRegreso">
+                            <a href="#" @click.prevent="regresaTabla" v-show="verFlechaRegreso">
                                 <span class="glyphicon glyphicon-chevron-left"></span>
                             </a>
                             <b>{{ descriptivo | mayusculas | titulo }}</b>
@@ -87,6 +87,10 @@ export default {
         agregaMultiRegistro(tipoMultiRegistro) {
             this.verBtnAgregar = false
             this.verFlechaRegreso = true
+        },
+        regresaTabla(){
+            this.verBtnAgregar = true
+            this.verFlechaRegreso = false
         }
     },
     components: {
