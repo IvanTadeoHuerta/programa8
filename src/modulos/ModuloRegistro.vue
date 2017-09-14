@@ -2,6 +2,7 @@
   <div>
     <formulario @enviaDatos="recibeDatos"></formulario>
     <multiregistro :setTipo="tipo" :setFolio="folio" :setDescriptivo="descriptivo" :setReset="reset"></multiregistro>
+    <viewfile></viewfile>
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 
 import Formulario from '../components/InspeccionComponent.vue'
 import Multiregistro from '../components/MultiRegistroComponent.vue'
+import { Viewfile } from '../components/TablasMultiRegistrosComponent.vue'
 import InspeccionMixin from '../mixins/inspeccion'
 
 export default {
@@ -17,6 +19,7 @@ export default {
   mixins: [InspeccionMixin],
   components: {
         Formulario,
+        Viewfile,
         Multiregistro
   }
 }

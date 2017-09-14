@@ -3,6 +3,7 @@
     <busquedapanel @clicEnRegistro="cambiaVerFormulario"></busquedapanel>
     <formulario v-show="mostrarFormulario" @enviaDatos="recibeDatos"></formulario>
     <multiregistro :setTipo="tipo" :setFolio="folio" :setDescriptivo="descriptivo" :setReset="reset"></multiregistro>
+    <viewfile></viewfile>
   </div>
 </template>
 
@@ -11,6 +12,7 @@
 import Busquedapanel from '../components/BusquedaComponent.vue'
 import Formulario from '../components/InspeccionComponent.vue'
 import Multiregistro from '../components/MultiRegistroComponent.vue'
+import { Viewfile } from '../components/TablasMultiRegistrosComponent.vue'
 import inspeccionService from '../services/inspeccion'
 import InspeccionMixin from '../mixins/inspeccion'
 
@@ -33,6 +35,7 @@ export default {
   components: {
         Busquedapanel,
         Formulario,
+        Viewfile,
         Multiregistro
   }
 }
