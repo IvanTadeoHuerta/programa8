@@ -1,16 +1,16 @@
 <template>
  	<form id="predio">
     	<div class="col-lg-12">
-    		<div class="form-group">
+    		<div class="form-group" v-show="accion == 'actualizar'">
     			<div class="row">
     				<div class="col-md-6 col-sm-12 col-xs-12">
                         <label>Consecutivo</label>
-    					<input type="text" name="consecutivo" class="form-control" value="">
+    					<input type="text" name="consecutivo" class="form-control" value="" disabled>
     				</div>
 
     				<div class="col-md-6 col-sm-12 col-xs-12">
                         <label>Folio</label>
-    					<input type="text" name="folio" class="form-control" value="">
+    					<input type="text" name="folio" class="form-control" value="" disabled>
     				</div>
     			</div>
     		</div>
