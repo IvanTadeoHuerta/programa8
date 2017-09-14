@@ -35,7 +35,9 @@ const multiRegistroMixin = {
                 }
             })
         },
-
+        actualizarMultiRegistro(consecutivo,tipo){
+            this.$emit('setConsecutivoTipo',consecutivo,tipo)
+        },
         popArreglo(arreglo, valor, propiedad) {
             if (arreglo.length > 0) {
                 let exist = this.arrayObjectIndexOf(arreglo, valor, propiedad);

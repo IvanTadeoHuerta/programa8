@@ -19,23 +19,44 @@
                 </div>
                 <div class="modal-body" style="max-height: 400px; overflow-y:auto;">
                     <div v-show="verBtnAgregar">
-                        <dependencias v-if="tipo=='dependencias'"></dependencias>
-                        <vehiculos v-else-if="tipo=='vehiculos'"></vehiculos>
-                        <personas v-else-if="tipo=='personas'"></personas>
-                        <productos v-else-if="tipo == 'productos'"></productos>
-                        <predios v-else-if="tipo == 'predios'"></predios>
-                        <inspectores v-else-if="tipo == 'inspectores'"></inspectores>
-                        <archivos v-else-if="tipo == 'archivos'"></archivos>
+                        <dependencias 
+                                    v-if="tipo=='dependencias'"  
+                                    @setConsecutivoTipo="editarMultiRegistro">
+                        </dependencias>
+                        <vehiculos 
+                                    v-else-if="tipo=='vehiculos'"
+                                    @setConsecutivoTipo="editarMultiRegistro">
+                        </vehiculos>
+                        <personas 
+                                    v-else-if="tipo=='personas'"
+                                    @setConsecutivoTipo="editarMultiRegistro">
+                        </personas>
+                        <productos 
+                                    v-else-if="tipo == 'productos'"
+                                    @setConsecutivoTipo="editarMultiRegistro">
+                        </productos>
+                        <predios 
+                                    v-else-if="tipo == 'predios'"
+                                    @setConsecutivoTipo="editarMultiRegistro">
+                        </predios>
+                        <inspectores 
+                                    v-else-if="tipo == 'inspectores'"
+                                    @setConsecutivoTipo="editarMultiRegistro">
+                        </inspectores>
+                        <archivos 
+                                    v-else-if="tipo == 'archivos'"
+                                    @setConsecutivoTipo="editarMultiRegistro">
+                        </archivos>
                         <div v-else>No se encontró multiregistro. Contacte con el administrador del sistema</div>
                     </div>
                     <div v-show="verFlechaRegreso">
-                        <form-dependencia v-if="tipo=='dependencias'"></form-dependencia>
-                        <form-vehiculo v-else-if="tipo=='vehiculos'"></form-vehiculo>
-                        <form-persona-asegurada v-else-if="tipo=='personas'"></form-persona-asegurada>
-                        <form-producto v-else-if="tipo == 'productos'"></form-producto>
-                        <form-predio v-else-if="tipo == 'predios'"></form-predio>
-                        <form-inspector-forestal v-else-if="tipo == 'inspectores'"></form-inspector-forestal>
-                        <form-archivo v-else-if="tipo == 'archivos'"></form-archivo>
+                        <form-dependencia v-if="tipo=='dependencias'" :setAccion="btnVer"></form-dependencia>
+                        <form-vehiculo v-else-if="tipo=='vehiculos'" :setAccion="btnVer"></form-vehiculo>
+                        <form-persona-asegurada v-else-if="tipo=='personas'" :setAccion="btnVer"></form-persona-asegurada>
+                        <form-producto v-else-if="tipo == 'productos'" :setAccion="btnVer"></form-producto>
+                        <form-predio v-else-if="tipo == 'predios'" :setAccion="btnVer"></form-predio>
+                        <form-inspector-forestal v-else-if="tipo == 'inspectores'" :setAccion="btnVer"></form-inspector-forestal>
+                        <form-archivo v-else-if="tipo == 'archivos'" :setAccion="btnVer"></form-archivo>
                         <div v-else>No se encontró multiregistro. Contacte con el administrador del sistema</div>
                     </div>
                 </div>
@@ -70,6 +91,7 @@ export default {
         return {
             verFlechaRegreso: false,
             verBtnAgregar: true,
+            btnVer: '',
             tipo: '',
             descriptivo: '',
             folio: null
@@ -78,6 +100,7 @@ export default {
     created: function(){
         this.verBtnAgregar = true
         this.verFlechaRegreso = false
+        this.btnVer= ''
         this.tipo = ''
         this.descriptivo = ''
         this.folio = null
@@ -86,11 +109,18 @@ export default {
 
         agregaMultiRegistro(tipoMultiRegistro) {
             this.verBtnAgregar = false
-            this.verFlechaRegreso = true
+            this.verFlechaRegreso = 
+            this.btnVer= 'agregar'
         },
         regresaTabla(){
             this.verBtnAgregar = true
             this.verFlechaRegreso = false
+            this.btnVer= ''
+        },
+        editarMultiRegistro(consecutivo, tipo){
+            this.btnVer= 'actualizar'
+            this.verBtnAgregar = false
+            this.verFlechaRegreso = true
         }
     },
     components: {

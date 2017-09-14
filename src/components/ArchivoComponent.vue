@@ -48,11 +48,8 @@
     		<div class="form-group">
                 <div class="row">
                     <br>
-                    <div class="col-md-6 col-sm-12 col-xs-12">
-                        <button type="button" class="btn btn-default btn-block">Cancelar</button>
-                    </div>
-                    <div class="col-md-6 col-sm-12 col-xs-12">
-                        <button type="button" class="btn btn-success btn-block">Aceptar</button>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <button type="button" class="btn btn-success btn-block">Agregar archivo</button>
                     </div>
                 </div>
             </div>
@@ -60,6 +57,7 @@
     </form>
 </template>
 <script>
+
 export default {
   name: 'formArchivo'
 }

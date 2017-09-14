@@ -25,13 +25,20 @@
                                         <td>{{ dependencia.consecutivo }}</td>
                                         <td>{{ dependencia.folio }}</td>
                                         <td>{{ dependencia.dependencia  }} </td>
-                                        <td><button type="button" class="btn btn-success">Actualizar</button></td>
+                                        <td><button 
+                                                    type="button" 
+                                                    class="btn btn-success"
+                                                    @click="actualizarMultiRegistro(dependencia.consecutivo,'dependencia')">
+                                                    Actualizar
+                                            </button>
+                                        </td>
                                         <td><button 
                                                 type="button" 
                                                 class="btn btn-default"
                                                 @click="eliminarMultiRegistro(dependencia.consecutivo,dependencia.folio,'dependencia')">
                                                 Eliminar
-                                            </button></td>
+                                            </button>
+                                        </td>
                                 </tr>
                             </template>
                             <tr v-else>
@@ -82,7 +89,13 @@
                                         <td>{{ vehiculo.consecutivo }}</td>
                                         <td>{{ vehiculo.folio }}</td>
                                         <td>{{ vehiculo.dependencia  }} </td>
-                                        <td><button type="button" class="btn btn-success">Actualizar</button></td>
+                                        <td><button 
+                                                    type="button" 
+                                                    class="btn btn-success"
+                                                    @click="actualizarMultiRegistro(vehiculo.consecutivo,'vehiculo')">
+                                                    Actualizar
+                                            </button>
+                                        </td>
                                         <td><button 
                                                 type="button" 
                                                 class="btn btn-default"
@@ -138,7 +151,13 @@
                                         <td>{{ persona.consecutivo }}</td>
                                         <td>{{ persona.folio }}</td>
                                         <td>{{ persona.nombre_infractor  }} </td>
-                                        <td><button type="button" class="btn btn-success">Actualizar</button></td>
+                                        <td><button 
+                                                    type="button" 
+                                                    class="btn btn-success"
+                                                    @click="actualizarMultiRegistro(persona.consecutivo,'persona')">
+                                                    Actualizar
+                                            </button>
+                                        </td>
                                         <td><button 
                                                 type="button" 
                                                 class="btn btn-default"
@@ -194,7 +213,13 @@
                                         <td>{{ producto.consecutivo }}</td>
                                         <td>{{ producto.folio }}</td>
                                         <td>{{ producto.categoria  }} </td>
-                                        <td><button type="button" class="btn btn-success">Actualizar</button></td>
+                                        <td><button 
+                                                    type="button" 
+                                                    class="btn btn-success"
+                                                    @click="actualizarMultiRegistro(producto.consecutivo,'producto')">
+                                                    Actualizar
+                                            </button>
+                                        </td>
                                         <td><button 
                                                 type="button" 
                                                 class="btn btn-default"
@@ -250,7 +275,13 @@
                                         <td>{{ predio.consecutivo }}</td>
                                         <td>{{ predio.folio }}</td>
                                         <td>{{ predio.cup  }} </td>
-                                        <td><button type="button" class="btn btn-success">Actualizar</button></td>
+                                        <td><button 
+                                                    type="button" 
+                                                    class="btn btn-success"
+                                                    @click="actualizarMultiRegistro(predio.consecutivo,'predio')">
+                                                    Actualizar
+                                            </button>
+                                        </td>
                                         <td><button 
                                                 type="button" 
                                                 class="btn btn-default"
@@ -300,17 +331,23 @@
                         <tbody>
                             <template v-if="inspectores.length > 0">
                                 <tr
-                                    v-for="(inspectores, index ) in inspectores" 
+                                    v-for="(inspector, index ) in inspectores" 
                                     :key="inspectores.id" style="cursor:pointer">
 
-                                        <td>{{ inspectores.consecutivo }}</td>
-                                        <td>{{ inspectores.folio }}</td>
-                                        <td>{{ inspectores.inspector  }} </td>
-                                        <td><button type="button" class="btn btn-success">Actualizar</button></td>
+                                        <td>{{ inspector.consecutivo }}</td>
+                                        <td>{{ inspector.folio }}</td>
+                                        <td>{{ inspector.inspector  }} </td>
+                                        <td><button 
+                                                    type="button" 
+                                                    class="btn btn-success"
+                                                    @click="actualizarMultiRegistro(inspector.consecutivo,'inspector')">
+                                                    Actualizar
+                                            </button>
+                                        </td>
                                         <td><button 
                                                 type="button" 
                                                 class="btn btn-default"
-                                                @click="eliminarMultiRegistro(inspectores.consecutivo,inspectores.folio,'inspectores')">
+                                                @click="eliminarMultiRegistro(inspector.consecutivo,inspector.folio,'inspectores')">
                                                 Eliminar
                                         </button></td>
                                 </tr>

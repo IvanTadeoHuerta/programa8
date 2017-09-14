@@ -104,11 +104,11 @@
     		<div class="form-group">
                 <div class="row">
                     <br>
-                    <div class="col-md-6 col-sm-12 col-xs-12">
-                        <button type="button" class="btn btn-default btn-block">Cancelar</button>
+                    <div v-if="accion == 'actualizar'" class="col-md-12 col-sm-12 col-xs-12 text-center" >
+                        <button type="button" class="btn btn-success btn-block">Actualizar</button>
                     </div>
-                    <div class="col-md-6 col-sm-12 col-xs-12">
-                        <button type="button" class="btn btn-success btn-block">Aceptar</button>
+                    <div v-else-if="accion == 'agregar'" class="col-md-12 col-sm-12 col-xs-12 text-center">
+                        <button type="button" class="btn btn-success btn-block">Agregar bien / producto</button>
                     </div>
                 </div>
             </div>
@@ -116,7 +116,9 @@
     </form>
 </template>
 <script>
+import FormMultiregistrosMixins from '../mixins/formMultiRegistros'
 export default {
-  name: 'formProducto'
+	name: 'formProducto',
+	mixins: [FormMultiregistrosMixins]
 }
 </script>
