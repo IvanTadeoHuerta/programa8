@@ -4,6 +4,8 @@ function regex() {
             return arg != value;
         }
     )
+
+    //Aqui agregas expresion regular
 }
 
 

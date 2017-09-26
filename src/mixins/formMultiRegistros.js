@@ -5,6 +5,9 @@ const formMultiregistrosMixins = {
             accion: ''
         }
     },
+    created: function(){
+         this.accion = this.setAccion
+    },
     watch: {
         setAccion: function () {
             this.accion = this.setAccion

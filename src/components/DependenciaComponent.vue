@@ -5,12 +5,12 @@
     			<div class="row">
     				<div class="col-md-6 col-sm-12 col-xs-12">
                         <label>Consecutivo</label>
-    					<input type="text" name="consecutivo" class="form-control" value="" disabled>
+    					<input type="text" name="consecutivo" class="form-control" v-model="form.consecutivo" disabled>
     				</div>
 
     				<div class="col-md-6 col-sm-12 col-xs-12">
                         <label>Folio</label>
-    					<input type="text" name="folio" class="form-control" value="" disabled>
+    					<input type="text" name="folio" class="form-control" v-model="form.folio" disabled>
     				</div>
     			</div>
     		</div>
@@ -19,14 +19,16 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12 col-xs-12">
                         <label>Dependencia</label>
-                        <select name="dependencia" class="form-control">
+                        <select name="dependencia" class="form-control" v-model="form.id_dependencia">
                             <option value="-1">Seleccione una opción...</option>
+                            <option value="1">Dependencia 1 ejemplo</option>
+                            <option value="2">Dependencia 2 ejemplo</option>
                         </select>
                     </div>
 
                     <div class="col-md-6 col-sm-12 col-xs-12">
                         <label>Cantidad</label>
-                        <input type="text" name="cantidad" class="form-control">
+                        <input type="text" name="cantidad" v-model="form.cantidad" class="form-control">
                     </div>
                 </div>
             </div>
@@ -48,9 +50,22 @@
 
 <script>
 import FormMultiregistrosMixins from '../mixins/formMultiRegistros'
+import Formulario from '../datosFormularios/dependencia'
 export default {
     name: 'formDependencia',
-    mixins: [FormMultiregistrosMixins]
+    mixins: [FormMultiregistrosMixins],
+    data() {
+        return {
+            form: Object.assign({}, Formulario)
+        }
+    },
+    created: function() {
+        this.form = Object.assign({}, Formulario)
+        /*this.$bus.$on('set-Dependencia', (dependencia) => {
+            this.form = dependencia
+        })*/
+    }
+
 }
 </script>
 

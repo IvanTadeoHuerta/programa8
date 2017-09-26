@@ -118,6 +118,9 @@ export default {
             this.btnVer= ''
         },
         editarMultiRegistro(consecutivo, tipo){
+            /*if(tipo == 'dependencias'){
+                this.$bus.$emit('set-Dependencia')
+            }*/
             this.btnVer= 'actualizar'
             this.verBtnAgregar = false
             this.verFlechaRegreso = true

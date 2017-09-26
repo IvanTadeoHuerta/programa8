@@ -28,7 +28,7 @@
                                         <td><button 
                                                     type="button" 
                                                     class="btn btn-success"
-                                                    @click="actualizarMultiRegistro(dependencia.consecutivo,'dependencia')">
+                                                    @click="actualizarMultiRegistro(dependencia.consecutivo,'dependencias')">
                                                     Actualizar
                                             </button>
                                         </td>
@@ -271,7 +271,6 @@
                                 <tr
                                     v-for="(predio, index ) in predios" 
                                     :key="predio.id" style="cursor:pointer">
-
                                         <td>{{ predio.consecutivo }}</td>
                                         <td>{{ predio.folio }}</td>
                                         <td>{{ predio.cup  }} </td>
